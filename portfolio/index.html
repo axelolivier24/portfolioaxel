@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tejiona Kenfack Axel Olivier | Développeur Full-Stack</title>
+    
+    <!-- Préchargement des images critiques -->
+    <link rel="preload" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBGMEYwIi8+PC9zdmc+" as="image">
+    
     <style>
         /* Palette professionnelle - Règle des 3 couleurs */
         :root {
@@ -345,6 +349,8 @@
             overflow: hidden;
             box-shadow: 15px 15px 0 var(--secondary);
             flex-shrink: 0;
+            position: relative;
+            background-color: var(--accent-light);
         }
 
         .about-img {
@@ -352,6 +358,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .about-img.loaded {
+            opacity: 1;
         }
 
         .about-img-container:hover .about-img {
@@ -605,6 +617,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .projecto.loaded {
+            opacity: 1;
         }
 
         .project-card:hover .projecto {
@@ -1057,6 +1075,23 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Placeholder pour les images en cours de chargement */
+        .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1113,7 +1148,16 @@
         <h2 class="section-title">À propos</h2>
         <div class="about-container">
             <div class="about-img-container">
-                <img src="profil.webp" alt="Tejiona Kenfack Axel Olivier" class="about-img">
+                <div class="image-placeholder"></div>
+                <img 
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBGMEYwIi8+PC9zdmc+" 
+                    data-src="profil.webp" 
+                    alt="Tejiona Kenfack Axel Olivier" 
+                    class="about-img" 
+                    loading="lazy" 
+                    width="350" 
+                    height="350"
+                >
             </div>
             <div class="about-content">
                 <h3>Développeur Full-Stack spécialisé en solutions web et mobiles</h3>
@@ -1409,7 +1453,16 @@
             
             <div class="project-card">
                 <div class="project-image">
-                    <img src="CAP2.webp" class="projecto" alt="Plateforme LMS">
+                    <div class="image-placeholder"></div>
+                    <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBGMEYwIi8+PC9zdmc+" 
+                        data-src="CAP2.webp" 
+                        class="projecto" 
+                        alt="Plateforme LMS" 
+                        loading="lazy" 
+                        width="350" 
+                        height="220"
+                    >
                 </div>
                 <div class="project-info">
                     <h3>Plateforme LMS</h3>
@@ -1429,7 +1482,16 @@
             
             <div class="project-card">
                 <div class="project-image">
-                    <img src="CAP3.webp" class="projecto" alt="CamerFood">
+                    <div class="image-placeholder"></div>
+                    <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIyMCIgeG1lbnNpb25lZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNGMEYwRjAiLz48L3N2Zz4=" 
+                        data-src="CAP3.webp" 
+                        class="projecto" 
+                        alt="CamerFood" 
+                        loading="lazy" 
+                        width="350" 
+                        height="220"
+                    >
                 </div>
                 <div class="project-info">
                     <h3>CamerFood — Application de recettes camerounaises</h3>
@@ -1449,7 +1511,16 @@
 
              <div class="project-card">
                 <div class="project-image">
-                    <img src="CAP1.webp" class="projecto" alt="Gestion de bulletin scolaire">
+                    <div class="image-placeholder"></div>
+                    <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBGMEYwIi8+PC9zdmc+" 
+                        data-src="CAP1.webp" 
+                        class="projecto" 
+                        alt="Gestion de bulletin scolaire" 
+                        loading="lazy" 
+                        width="350" 
+                        height="220"
+                    >
                 </div>
                 <div class="project-info">
                     <h3>Application  de gestion de bulletin scolaire </h3>
@@ -1671,55 +1742,55 @@
         });
 
         // Gestion du formulaire de contact avec Web3Forms
-const contactForm = document.getElementById('contactForm');
-const toast = document.getElementById('toast');
-const submitBtn = document.getElementById('submitBtn');
-const formLoader = document.getElementById('formLoader');
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+        const submitBtn = document.getElementById('submitBtn');
+        const formLoader = document.getElementById('formLoader');
 
-contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Afficher le loader
-    submitBtn.disabled = true;
-    formLoader.style.display = 'inline-block';
-    
-    try {
-        // Récupération des données du formulaire
-        const formData = new FormData(contactForm);
-        
-        // Envoi des données à Web3Forms
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Afficher le loader
+            submitBtn.disabled = true;
+            formLoader.style.display = 'inline-block';
+            
+            try {
+                // Récupération des données du formulaire
+                const formData = new FormData(contactForm);
+                
+                // Envoi des données à Web3Forms
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    toast.textContent = 'Message envoyé avec succès!';
+                    toast.style.backgroundColor = 'var(--secondary)';
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
+                toast.style.backgroundColor = '#e74c3c';
+            } finally {
+                // Afficher la notification
+                toast.classList.add('show');
+                
+                // Cacher la notification après 3 secondes
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+                
+                // Réactiver le bouton et cacher le loader
+                submitBtn.disabled = false;
+                formLoader.style.display = 'none';
+            }
         });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            toast.textContent = 'Message envoyé avec succès!';
-            toast.style.backgroundColor = 'var(--secondary)';
-            contactForm.reset();
-        } else {
-            throw new Error(data.message || 'Erreur lors de l\'envoi');
-        }
-    } catch (error) {
-        console.error('Erreur:', error);
-        toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-        toast.style.backgroundColor = '#e74c3c';
-    } finally {
-        // Afficher la notification
-        toast.classList.add('show');
-        
-        // Cacher la notification après 3 secondes
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-        
-        // Réactiver le bouton et cacher le loader
-        submitBtn.disabled = false;
-        formLoader.style.display = 'none';
-    }
-});
 
         // Téléchargement du CV (simulé)
         document.getElementById('downloadCV').addEventListener('click', function(e) {
@@ -1790,6 +1861,49 @@ contactForm.addEventListener('submit', async function(e) {
         // Initialiser et écouter les changements de taille
         window.addEventListener('load', adjustAnimations);
         window.addEventListener('resize', adjustAnimations);
+
+        // Chargement progressif des images
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observer pour le lazy loading des images
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                            }
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                            
+                            // Cacher le placeholder une fois l'image chargée
+                            const placeholder = img.previousElementSibling;
+                            if (placeholder && placeholder.classList.contains('image-placeholder')) {
+                                setTimeout(() => {
+                                    placeholder.style.display = 'none';
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+
+                // Observer toutes les images avec data-src
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback pour les navigateurs sans support d'IntersectionObserver
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    
+                    const placeholder = img.previousElementSibling;
+                    if (placeholder && placeholder.classList.contains('image-placeholder')) {
+                        placeholder.style.display = 'none';
+                    }
+                });
+            }
+        });
     </script>
     
     <!-- EmailJS SDK -->

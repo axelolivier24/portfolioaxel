@@ -12,6 +12,7 @@
             --neutral: #3A3A3A;   /* Gris foncé (couleur de texte) */
             --light: #F7F9FC;     /* Fond clair */
             --white: #FFFFFF;
+            --accent-light: rgba(46, 134, 171, 0.1);
         }
 
         /* Base professionnelle */
@@ -146,11 +147,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
         }
 
         .logo {
@@ -285,31 +281,12 @@
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             padding: 0.9rem 2.2rem;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
         }
 
         .btn-primary {
@@ -345,7 +322,7 @@
             box-shadow: 0 15px 30px rgba(241, 143, 1, 0.3);
         }
 
-        /* Section À propos professionnelle */
+        /* Section À propos professionnelle - RESTRUCTURÉE */
         #about {
             background-color: var(--white);
             border-radius: 20px;
@@ -357,7 +334,7 @@
 
         .about-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 5rem;
         }
 
@@ -367,7 +344,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 15px 15px 0 var(--secondary);
-            position: relative;
+            flex-shrink: 0;
         }
 
         .about-img {
@@ -381,6 +358,10 @@
             transform: scale(1.05);
         }
 
+        .about-content {
+            flex: 1;
+        }
+
         .about-content h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
@@ -391,36 +372,127 @@
             margin-bottom: 1.5rem;
         }
 
-        .experience-list {
-            margin-top: 2rem;
+        /* Nouveau design pour la timeline des formations et expériences */
+        .timeline-section {
+            margin-top: 4rem;
         }
 
-        .experience-item {
+        .timeline-title {
+            font-size: 1.8rem;
+            color: var(--primary);
             margin-bottom: 2rem;
             position: relative;
-            padding-left: 2.5rem;
-            transition: transform 0.3s ease;
+            padding-left: 1.5rem;
         }
 
-        .experience-item:hover {
-            transform: translateX(10px);
-        }
-
-        .experience-item::before {
+        .timeline-title::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
             background-color: var(--secondary);
+            border-radius: 50%;
         }
 
-        .experience-date {
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-left: 1rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--accent-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-date {
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .timeline-date i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--neutral);
+        }
+
+        .timeline-item p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .location {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item .location i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background-color: var(--accent-light);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         /* Section Compétences professionnelle */
@@ -436,12 +508,11 @@
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         .skill-category h3 {
@@ -489,6 +560,10 @@
         }
 
         /* Section Projets professionnelle */
+        #projects {
+            margin: 5rem auto;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -502,20 +577,6 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
         }
 
         .project-card:hover {
@@ -523,14 +584,20 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
         .project-image {
             height: 220px;
             overflow: hidden;
             position: relative;
+            background-color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.7;
         }
 
         .projecto {
@@ -546,8 +613,6 @@
 
         .project-info {
             padding: 1.8rem;
-            position: relative;
-            z-index: 2;
         }
 
         .project-info h3 {
@@ -575,23 +640,11 @@
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .tech-tag {
-            background-color: var(--primary);
-            color: white;
         }
 
         .project-links {
             display: flex;
             gap: 1rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-links {
-            opacity: 1;
         }
 
         .project-link {
@@ -599,12 +652,12 @@
             align-items: center;
             font-weight: 600;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--primary);
             transition: color 0.3s ease;
         }
 
         .project-link:hover {
-            color: var(--primary);
+            color: var(--secondary);
         }
 
         .project-link i {
@@ -654,11 +707,6 @@
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
         }
 
         .contact-item i {
@@ -684,7 +732,6 @@
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         .form-group label {
@@ -726,23 +773,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
         }
 
         .submit-btn:hover {
@@ -820,56 +850,6 @@
         .copyright {
             opacity: 0.7;
             font-size: 0.9rem;
-        }
-
-        /* Scroll progress indicator */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            z-index: 1001;
-            transition: width 0.2s ease;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--secondary);
-            transform: translateY(-5px);
-        }
-
-        /* Mode PC sur mobile */
-        @media (min-width: 992px) {
-            .mobile-only {
-                display: none !important;
-            }
         }
 
         /* Responsive Design */
@@ -975,6 +955,14 @@
                 width: 250px;
                 height: 250px;
             }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -1.8rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1028,11 +1016,8 @@
                 height: 180px;
             }
 
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
+            .timeline-item {
+                padding: 1rem;
             }
         }
 
@@ -1072,85 +1057,11 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        /* Animations supplémentaires */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .animate-fadeInLeft {
-            animation: fadeInLeft 0.6s ease forwards;
-        }
-
-        .animate-fadeInRight {
-            animation: fadeInRight 0.6s ease forwards;
-        }
-
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
-
-        .delay-400 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-500 {
-            animation-delay: 0.5s;
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Barre de progression du défilement -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Bouton retour en haut -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
     <!-- Animations de fond améliorées -->
     <div class="background-animation">
         <div class="shape shape-1"></div>
@@ -1162,7 +1073,7 @@
     </div>
 
     <!-- Navigation Professionnelle -->
-    <header id="mainHeader">
+    <header>
         <div class="logo">TKAO<span>.</span></div>
         <nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1181,30 +1092,30 @@
     <!-- Section Hero Professionnelle -->
     <section id="hero">
         <div class="hero-content">
-            <h1 class="hero-title animate-fadeInUp">Tejiona Kenfack <span>Axel Olivier</span></h1>
-            <h2 class="hero-subtitle animate-fadeInUp delay-100">Développeur Full-Stack </h2>
-            <p class="hero-description animate-fadeInUp delay-200">
+            <h1 class="hero-title">Tejiona Kenfack <span>Axel Olivier</span></h1>
+            <h2 class="hero-subtitle">Développeur Full-Stack </h2>
+            <p class="hero-description">
                 Jeune diplômé en Génie Logiciel, passionné par le développement web et les technologies backend. 
                 Expériences pratiques en conception et optimisation d'applications, avec un fort intérêt pour l'innovation et l'apprentissage continu.
             </p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary animate-fadeInUp delay-300">Voir mes projets</a>
-                <a href="#contact" class="btn btn-secondary animate-fadeInUp delay-400">Me contacter</a>
-                <a href="" class="btn btn-download animate-fadeInUp delay-500" id="downloadCV">
+                <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                <a href="" class="btn btn-download" id="downloadCV">
                     <i class="fas fa-download"></i> Télécharger mon CV
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Section À Propos Professionnelle -->
+    <!-- Section À Propos Professionnelle - RESTRUCTURÉE -->
     <section id="about">
         <h2 class="section-title">À propos</h2>
         <div class="about-container">
-            <div class="about-img-container animate-fadeInLeft">
+            <div class="about-img-container">
                 <img src="profil.webp" alt="Tejiona Kenfack Axel Olivier" class="about-img">
             </div>
-            <div class="about-content animate-fadeInRight">
+            <div class="about-content">
                 <h3>Développeur Full-Stack spécialisé en solutions web et mobiles</h3>
                 <p>
                     Diplômé en Génie Logiciel, je mets mes compétences techniques et ma créativité au service de projets innovants. 
@@ -1215,52 +1126,101 @@
                     en passant par les tests et l'optimisation des performances.
                 </p>
                 
-                <h3>Formation</h3>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-date">2024 – 2025</div>
-                        <h4>Licence Technologique en Génie Logiciel</h4>
-                        <p>IUT de Ngaoundéré</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-date">2022 – 2024</div>
-                        <h4>DUT en Génie Logiciel</h4>
-                        <p>IUT de Ngaoundéré</p>
+                <!-- Nouvelle structure pour la formation -->
+                <div class="timeline-section">
+                    <h3 class="timeline-title">Formation</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2024 – 2025
+                            </div>
+                            <h4>Licence Technologique en Génie Logiciel</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> IUT de Ngaoundéré
+                            </p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2022 – 2024
+                            </div>
+                            <h4>DUT en Génie Logiciel</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> IUT de Ngaoundéré
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <h3>Expériences Professionnelles</h3>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-date">2025</div>
-                        <h4>Développeur Full Stack – Stage</h4>
-                        <p>IUT de Ngaoundéré – Technologies : Laravel, MySQL, Bootstrap, MongoDB</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-date">2024</div>
-                        <h4>Développeur Backend – Stage</h4>
-                        <p>Sygalin – Technologies : CodeIgniter, MySQL</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-date">2023</div>
-                        <h4>Stage Ouvrier – Enquêtes avec Sphinx</h4>
-                        <p>IUT de Ngaoundéré</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-date">2021</div>
-                        <h4>Technicien Réseau et Web – Stage</h4>
-                        <p>Hôpital Protestant de Ngaoundéré</p>
+                <!-- Nouvelle structure pour les expériences -->
+                <div class="timeline-section">
+                    <h3 class="timeline-title">Expériences Professionnelles</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2025
+                            </div>
+                            <h4>Développeur Full Stack – Stage</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> IUT de Ngaoundéré
+                            </p>
+                            <p>Développement d'applications web complètes avec Laravel et MySQL</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2024
+                            </div>
+                            <h4>Développeur Backend – Stage</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> Sygalin
+                            </p>
+                            <p>Conception et développement d'API avec CodeIgniter</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">CodeIgniter</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2023
+                            </div>
+                            <h4>Stage Ouvrier – Enquêtes avec Sphinx</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> IUT de Ngaoundéré
+                            </p>
+                            <p>Réalisation d'enquêtes et analyse de données avec le logiciel Sphinx</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> 2021
+                            </div>
+                            <h4>Technicien Réseau et Web – Stage</h4>
+                            <p class="location">
+                                <i class="fas fa-map-marker-alt"></i> Hôpital Protestant de Ngaoundéré
+                            </p>
+                            <p>Maintenance réseau et développement de solutions web internes</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Compétences Professionnelle - RESTRUCTURÉE -->
+    <!-- Section Compétences Professionnelle -->
     <section id="skills">
         <h2 class="section-title">Mes compétences</h2>
         <div class="skills-grid">
-            <div class="skill-category animate-fadeInUp delay-100">
+            <div class="skill-category">
                 <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
                 <div class="skill-item">
                     <div class="skill-name">
@@ -1291,7 +1251,7 @@
                 </div>
             </div>
             
-            <div class="skill-category animate-fadeInUp delay-200">
+            <div class="skill-category">
                 <h3><i class="fas fa-server"></i> Backend</h3>
                 <div class="skill-item">
                     <div class="skill-name">
@@ -1322,7 +1282,7 @@
                 </div>
             </div>
             
-            <div class="skill-category animate-fadeInUp delay-300">
+            <div class="skill-category">
                 <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
                 <div class="skill-item">
                     <div class="skill-name">
@@ -1353,7 +1313,7 @@
                 </div>
             </div>
 
-            <div class="skill-category animate-fadeInUp delay-400">
+            <div class="skill-category">
                 <h3><i class="fas fa-mobile-alt"></i> Mobile</h3>
                 <div class="skill-item">
                     <div class="skill-name">
@@ -1376,7 +1336,7 @@
                
             </div>
 
-            <div class="skill-category animate-fadeInUp delay-500">
+            <div class="skill-category">
                 <h3><i class="fas fa-database"></i> Bases de données</h3>
                 <div class="skill-item">
                     <div class="skill-name">
@@ -1399,12 +1359,12 @@
                 
             </div>
 
-            <div class="skill-category animate-fadeInUp delay-600">
+            <div class="skill-category">
                 <h3><i class="fas fa-tools"></i> Outils & Méthodologies</h3>
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>Git/GitHub</span>
-                        <span>45%</span>
+                        <span>55%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 55%"></div>
@@ -1428,7 +1388,7 @@
     <section id="projects">
         <h2 class="section-title">Mes projets</h2>
         <div class="projects-grid">
-            <div class="project-card animate-fadeInUp delay-100">
+            <div class="project-card">
                 <div class="project-image">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
@@ -1447,7 +1407,7 @@
                 </div>
             </div>
             
-            <div class="project-card animate-fadeInUp delay-200">
+            <div class="project-card">
                 <div class="project-image">
                     <img src="CAP2.webp" class="projecto" alt="Plateforme LMS">
                 </div>
@@ -1467,7 +1427,7 @@
                 </div>
             </div>
             
-            <div class="project-card animate-fadeInUp delay-300">
+            <div class="project-card">
                 <div class="project-image">
                     <img src="CAP3.webp" class="projecto" alt="CamerFood">
                 </div>
@@ -1487,7 +1447,7 @@
                 </div>
             </div>
 
-             <div class="project-card animate-fadeInUp delay-400">
+             <div class="project-card">
                 <div class="project-image">
                     <img src="CAP1.webp" class="projecto" alt="Gestion de bulletin scolaire">
                 </div>
@@ -1513,7 +1473,7 @@
     <section id="contact">
         <h2 class="section-title">Contact</h2>
         <div class="contact-container">
-            <div class="contact-info animate-fadeInLeft">
+            <div class="contact-info">
                 <h3>Travaillons ensemble</h3>
                 <p>Je suis disponible pour des missions freelance ou des opportunités à long terme. N'hésitez pas à me contacter pour discuter de votre projet.</p>
                 
@@ -1556,28 +1516,34 @@
                 </div>
             </div>
             
-            <form class="contact-form animate-fadeInRight" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Sujet</label>
-                    <input type="text" id="subject" name="subject">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="form-loader" id="formLoader"></span>
-                    Envoyer le message
-                </button>
-            </form>
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+    <!-- Champ caché pour la clé API (remplacez YOUR_ACCESS_KEY par votre clé) -->
+    <input type="hidden" name="access_key" value="36dbda8d-b17d-4536-844e-2962fd535170">
+    
+    <!-- Champ pour le sujet (optionnel mais recommandé) -->
+    <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+    
+    <!-- Redirection après soumission (optionnel) -->
+    
+    
+    <!-- Autres champs du formulaire -->
+    <div class="form-group">
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn" id="submitBtn">
+        <span class="form-loader" id="formLoader"></span>
+        Envoyer le message
+    </button>
+</form>
         </div>
     </section>
 
@@ -1704,91 +1670,56 @@
             });
         });
 
-        // Gestion du formulaire de contact
-        const contactForm = document.getElementById('contactForm');
-        const toast = document.getElementById('toast');
-        const submitBtn = document.getElementById('submitBtn');
-        const formLoader = document.getElementById('formLoader');
+        // Gestion du formulaire de contact avec Web3Forms
+const contactForm = document.getElementById('contactForm');
+const toast = document.getElementById('toast');
+const submitBtn = document.getElementById('submitBtn');
+const formLoader = document.getElementById('formLoader');
+
+contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Afficher le loader
+    submitBtn.disabled = true;
+    formLoader.style.display = 'inline-block';
+    
+    try {
+        // Récupération des données du formulaire
+        const formData = new FormData(contactForm);
         
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Afficher le loader
-            submitBtn.disabled = true;
-            formLoader.style.display = 'inline-block';
-            
-            // Récupération des données du formulaire
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            try {
-                // Utilisation de EmailJS pour envoyer l'email
-                // Note: Vous devez créer un compte sur https://www.emailjs.com/ et configurer le service
-                // Remplacez ces valeurs par vos propres identifiants EmailJS
-                const serviceID = 'YOUR_SERVICE_ID';
-                const templateID = 'YOUR_TEMPLATE_ID';
-                const userID = 'YOUR_USER_ID';
-                
-                // Paramètres pour l'envoi d'email
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    subject: subject || 'Message depuis le portfolio',
-                    message: message,
-                    to_email: 'axeltejiona@gmail.com'
-                };
-                
-                // Envoi de l'email via EmailJS
-                // Note: Décommentez cette partie après avoir configuré EmailJS
-                /*
-                const response = await emailjs.send(serviceID, templateID, templateParams, userID);
-                
-                if (response.status === 200) {
-                    toast.textContent = 'Message envoyé avec succès!';
-                    toast.style.backgroundColor = 'var(--secondary)';
-                    contactForm.reset();
-                } else {
-                    throw new Error('Erreur lors de l\'envoi');
-                }
-                */
-                
-                // Simulation d'envoi (à supprimer après configuration d'EmailJS)
-                setTimeout(() => {
-                    toast.textContent = 'Message envoyé avec succès!';
-                    toast.style.backgroundColor = 'var(--secondary)';
-                    contactForm.reset();
-                    
-                    // Afficher la notification
-                    toast.classList.add('show');
-                    
-                    // Cacher la notification après 3 secondes
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 3000);
-                    
-                    // Réactiver le bouton et cacher le loader
-                    submitBtn.disabled = false;
-                    formLoader.style.display = 'none';
-                }, 1500);
-                
-            } catch (error) {
-                console.error('Erreur:', error);
-                toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-                toast.style.backgroundColor = '#e74c3c';
-                toast.classList.add('show');
-                
-                // Cacher la notification après 3 secondes
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-                
-                // Réactiver le bouton et cacher le loader
-                submitBtn.disabled = false;
-                formLoader.style.display = 'none';
-            }
+        // Envoi des données à Web3Forms
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData
         });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            toast.textContent = 'Message envoyé avec succès!';
+            toast.style.backgroundColor = 'var(--secondary)';
+            contactForm.reset();
+        } else {
+            throw new Error(data.message || 'Erreur lors de l\'envoi');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
+        toast.style.backgroundColor = '#e74c3c';
+    } finally {
+        // Afficher la notification
+        toast.classList.add('show');
+        
+        // Cacher la notification après 3 secondes
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+        
+        // Réactiver le bouton et cacher le loader
+        submitBtn.disabled = false;
+        formLoader.style.display = 'none';
+    }
+});
 
         // Téléchargement du CV (simulé)
         document.getElementById('downloadCV').addEventListener('click', function(e) {
@@ -1855,45 +1786,6 @@
                 });
             }
         }
-
-        // Barre de progression du défilement
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progressHeight = (window.pageYOffset / totalHeight) * 100;
-            scrollProgress.style.width = progressHeight + "%";
-        });
-
-        // Bouton retour en haut
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Header qui disparaît/reapparaît au scroll
-        const header = document.getElementById('mainHeader');
-        let lastScrollY = window.scrollY;
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 200) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
 
         // Initialiser et écouter les changements de taille
         window.addEventListener('load', adjustAnimations);

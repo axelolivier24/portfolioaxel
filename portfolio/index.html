@@ -31,7 +31,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
         }
 
         html {
@@ -40,8 +40,7 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: var(--paper-beige);
+            font-family: 'Segoe UI', 'Georgia', serif;
             color: var(--ink-dark);
             line-height: 1.8;
             font-size: 1.1rem;
@@ -56,6 +55,7 @@
                     var(--paper-dark) 10px,
                     var(--paper-torn) 10px,
                     var(--paper-torn) 20px) 12;
+            background: var(--paper-beige);
         }
 
         /* Effet de papier vieux avec lignes légères */
@@ -80,12 +80,12 @@
             z-index: 1;
         }
 
-        /* Typographie manuscrite */
+        /* Typographie manuscrite améliorée */
         h1,
         h2,
         h3,
         h4 {
-            font-family: 'Bradley Hand', 'Segoe Print', 'Brush Script MT', cursive;
+            font-family: 'Segoe Print', 'Bradley Hand', 'Brush Script MT', cursive;
             font-weight: 600;
             position: relative;
             padding: 10px 20px;
@@ -163,17 +163,18 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
-        /* Navigation style trombones - RESPONSIVE */
+        /* Navigation fixe - Header amélioré */
         header {
             position: sticky;
             top: 0;
             background: var(--paper-torn);
-            padding: 15px 30px;
+            padding: 12px 30px;
             margin: -25px -25px 30px -25px;
             border-bottom: 3px double var(--paper-dark);
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .nav-container {
@@ -181,22 +182,23 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-wrap: nowrap;
+            gap: 15px;
         }
 
         .logo {
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             padding: 10px 20px;
             background: var(--paper-beige);
             border: 2px solid var(--ink-dark);
             transform: rotate(-2deg);
             position: relative;
             box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .logo::before {
@@ -213,7 +215,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Menu hamburger amélioré */
+        /* Menu hamburger amélioré pour mobile */
         .menu-toggle {
             display: none;
             background: var(--paper-beige);
@@ -225,6 +227,7 @@
             padding: 10px;
             transform: rotate(1deg);
             z-index: 1001;
+            flex-shrink: 0;
         }
 
         .menu-toggle span {
@@ -264,29 +267,33 @@
         nav {
             display: flex;
             align-items: center;
+            flex-grow: 1;
+            justify-content: flex-end;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: clamp(8px, 1vw, 15px);
             margin: 0;
             padding: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         nav a {
             color: var(--ink-dark);
             text-decoration: none;
             font-weight: bold;
-            padding: 8px 15px;
+            padding: 8px clamp(10px, 2vw, 15px);
             position: relative;
             background: var(--paper-beige);
             border: 1px solid var(--ink-dark);
             transform: rotate(0.5deg);
             transition: all 0.3s ease;
-            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             white-space: nowrap;
             font-family: 'Courier New', monospace;
         }
@@ -918,7 +925,7 @@
             padding: 12px 15px;
             border: 2px solid var(--paper-dark);
             background: var(--paper-beige);
-            font-family: 'Georgia', serif;
+            font-family: 'Segoe UI', 'Georgia', serif;
             font-size: 1rem;
             transition: all 0.3s ease;
             resize: vertical;
@@ -1132,7 +1139,7 @@
             }
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE DESIGN AMÉLIORÉ ===== */
 
         /* Tablettes */
         @media (max-width: 992px) {
@@ -1159,9 +1166,19 @@
             .polaroid-img {
                 height: 280px;
             }
+
+            /* Header ajusté pour tablettes */
+            header {
+                padding: 10px 20px;
+            }
+
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
         }
 
-        /* Mobiles */
+        /* Mobiles - HEADER FIXE SANS MENU DÉROULANT */
         @media (max-width: 768px) {
             body {
                 margin: 15px;
@@ -1174,40 +1191,50 @@
                 margin: 25px 0;
             }
 
+            /* Navigation toujours visible, pas de menu déroulant */
             .menu-toggle {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                display: none !important;
             }
 
             nav ul {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--paper-torn);
-                flex-direction: column;
-                padding: 80px 30px 30px;
-                border: 2px solid var(--paper-dark);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                margin: 0;
-                overflow-y: auto;
-            }
-
-            nav ul.active {
-                display: flex;
+                display: flex !important;
+                position: static !important;
+                flex-direction: row !important;
+                padding: 0 !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                overflow-y: visible !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
             }
 
             nav a {
+                width: auto !important;
+                text-align: center !important;
+                margin-bottom: 5px !important;
+                padding: 8px 10px !important;
+                font-size: 0.75rem !important;
+                background: var(--paper-beige) !important;
+            }
+
+            .nav-container {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 10px !important;
+            }
+
+            .logo {
+                order: 1;
                 width: 100%;
                 text-align: center;
                 margin-bottom: 10px;
-                padding: 12px;
-                font-size: 1rem;
+            }
+
+            nav {
+                order: 2;
+                width: 100%;
+                justify-content: center;
             }
 
             .hero-content {
@@ -1300,6 +1327,17 @@
                 align-items: center;
             }
 
+            /* Navigation adaptée pour très petits écrans */
+            nav ul {
+                gap: 5px !important;
+            }
+
+            nav a {
+                padding: 6px 8px !important;
+                font-size: 0.7rem !important;
+                letter-spacing: 0.5px !important;
+            }
+
             .project-card {
                 margin-bottom: 25px;
             }
@@ -1347,6 +1385,12 @@
                 padding: 8px 20px;
             }
 
+            /* Navigation ultra compacte */
+            nav a {
+                padding: 5px 6px !important;
+                font-size: 0.65rem !important;
+            }
+
             .polaroid-container {
                 max-width: 220px;
             }
@@ -1388,6 +1432,16 @@
 
             .cta-buttons {
                 margin-top: 20px;
+            }
+
+            /* Navigation en ligne pour paysage */
+            .nav-container {
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.7rem;
             }
         }
 
@@ -1434,7 +1488,7 @@
         p,
         li,
         .contact-info-item p {
-            font-size: 1.05rem;
+            font-size: clamp(1rem, 2vw, 1.05rem);
             line-height: 1.7;
             margin-bottom: 1rem;
             text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
@@ -1442,7 +1496,7 @@
 
         /* Style pour le texte manuscrit */
         .handwriting {
-            font-family: 'Bradley Hand', 'Segoe Print', cursive;
+            font-family: 'Segoe Print', 'Bradley Hand', cursive;
             font-style: italic;
         }
 
@@ -1463,9 +1517,21 @@
             transform: skewX(-15deg);
             opacity: 0.5;
         }
+
+        /* Correction pour le formulaire */
+        .form-submit-message {
+            display: none;
+            padding: 15px;
+            margin-top: 20px;
+            background: var(--highlight-yellow);
+            border: 1px solid var(--paper-dark);
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            transform: rotate(-0.5deg);
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+Print&family=Bradley+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+Print&family=Segoe+UI&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -1478,11 +1544,12 @@
     <div class="tape desktop-only"
         style="bottom: 180px; right: 15%; width: 60px; height: 25px; transform: rotate(-45deg);"></div>
 
-    <!-- Navigation -->
+    <!-- Navigation FIXE - Pas de menu déroulant -->
     <header>
         <div class="nav-container">
             <div class="logo fade-in">CARNET: TKAO</div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <!-- Le bouton hamburger est caché sur mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" style="display: none;">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1539,7 +1606,7 @@
                     <div class="polaroid-img">
                         <!-- VOTRE IMAGE DE PROFIL -->
                         <img src="profil.webp" alt="Tejiona Kenfack Axel Olivier" class="real-img"
-                            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNnB4IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QXhlbCBPbGl2aWVyPC90ZXh0Pjwvc3ZnPg=='">
+                            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNnB4IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj9ibWlkZGxlIiBkeT0iLjNlbSI+QXhlbCBPbGl2aWVyPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <div class="polaroid-caption">Développeur Full-Stack<br>Ngaoundéré, Cameroun</div>
                 </div>
@@ -1824,12 +1891,18 @@
 
             <div>
                 <h3 class="fade-in">ENVOYER UN MESSAGE</h3>
-                <!-- FORMULAIRE FONCTIONNEL AVEC WEB3FORMS -->
+                <!-- FORMULAIRE FONCTIONNEL AVEC WEB3FORMS - CONFIGURÉ POUR VOTRE EMAIL -->
                 <form class="contact-form fade-in" id="contactForm" action="https://api.web3forms.com/submit"
                     method="POST">
                     <!-- Champ caché pour la clé API -->
                     <input type="hidden" name="access_key" value="36dbda8d-b17d-4536-844e-2962fd535170">
-                    <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+                    <!-- Champ caché pour rediriger vers votre email -->
+                    <input type="hidden" name="redirect" value="true">
+                    <input type="hidden" name="subject" value="Nouveau message depuis le portfolio de Axel Olivier">
+                    <input type="hidden" name="from_name" value="Portfolio Axel Olivier">
+                    <!-- Champ pour spécifier l'email de destination -->
+                    <input type="hidden" name="replyto" value="axeltejiona@gmail.com">
+                    <input type="hidden" name="cc" value="axeltejiona@gmail.com">
 
                     <div class="form-group">
                         <label for="name">VOTRE NOM</label>
@@ -1847,10 +1920,15 @@
                             placeholder="Décrivez votre projet ou posez vos questions..."></textarea>
                     </div>
 
+                    <!-- Honeypot pour spam -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                     <button type="submit" class="submit-btn" id="submitBtn">
                         <span class="form-loader" id="formLoader"></span>
                         <i class="fas fa-paper-plane"></i> ENVOYER LE MESSAGE
                     </button>
+
+                    <div class="form-submit-message" id="formMessage"></div>
                 </form>
             </div>
         </div>
@@ -1876,33 +1954,20 @@
     <div class="toast" id="toast">Message envoyé avec succès!</div>
 
     <script>
-        // ========== MENU MOBILE ==========
-        const menuToggle = document.getElementById('menuToggle');
+        // ========== NAVIGATION FIXE - PAS DE MENU DÉROULANT ==========
+        // Le menu est toujours visible, pas de toggle sur mobile
         const navMenu = document.getElementById('navMenu');
+        const menuToggle = document.getElementById('menuToggle');
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
+        // Désactiver complètement le toggle sur mobile
+        if (menuToggle) {
+            menuToggle.style.display = 'none';
+        }
 
-        // Fermer le menu en cliquant sur un lien
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Fermer le menu en cliquant à l'extérieur
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+        // Le menu est toujours visible
+        if (navMenu) {
+            navMenu.style.display = 'flex';
+        }
 
         // ========== ANIMATIONS AU SCROLL ==========
         const fadeElements = document.querySelectorAll('.fade-in');
@@ -1919,10 +1984,7 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
 
-                    // Animation des éléments dans la section
-                    const index = Array.from(sections).indexOf(entry.target);
                     const fadeElementsInSection = entry.target.querySelectorAll('.fade-in');
-
                     fadeElementsInSection.forEach((el, i) => {
                         setTimeout(() => {
                             el.style.animationPlayState = 'running';
@@ -1941,93 +2003,111 @@
         const toast = document.getElementById('toast');
         const submitBtn = document.getElementById('submitBtn');
         const formLoader = document.getElementById('formLoader');
+        const formMessage = document.getElementById('formMessage');
 
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-            // Afficher le loader
-            submitBtn.disabled = true;
-            formLoader.style.display = 'inline-block';
+                // Afficher le loader
+                submitBtn.disabled = true;
+                formLoader.style.display = 'inline-block';
 
-            try {
-                // Récupération des données du formulaire
-                const formData = new FormData(contactForm);
+                try {
+                    const formData = new FormData(contactForm);
 
-                // Envoi des données à Web3Forms
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData
-                });
+                    // Ajouter des informations supplémentaires
+                    formData.append('to_email', 'axeltejiona@gmail.com');
+                    formData.append('from_email', formData.get('email'));
+                    formData.append('from_name', formData.get('name'));
 
-                const data = await response.json();
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
 
-                if (data.success) {
-                    toast.textContent = 'Message envoyé avec succès!';
-                    toast.style.background = 'var(--stamp-red)';
-                    contactForm.reset();
-                } else {
-                    throw new Error(data.message || 'Erreur lors de l\'envoi');
+                    const data = await response.json();
+
+                    if (data.success) {
+                        toast.textContent = 'Message envoyé avec succès!';
+                        toast.style.background = 'var(--stamp-red)';
+                        contactForm.reset();
+
+                        // Afficher un message dans le formulaire
+                        formMessage.textContent = 'Merci! Votre message a été envoyé. Je vous répondrai dans les plus brefs délais.';
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = 'var(--highlight-yellow)';
+                        formMessage.style.color = 'var(--ink-dark)';
+                    } else {
+                        throw new Error(data.message || 'Erreur lors de l\'envoi');
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
+                    toast.style.background = '#e74c3c';
+
+                    // Afficher un message d'erreur
+                    formMessage.textContent = 'Désolé, une erreur est survenue. Veuillez réessayer ou me contacter directement à axeltejiona@gmail.com';
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#ffe6e6';
+                    formMessage.style.color = '#c62828';
+                } finally {
+                    // Afficher la notification
+                    toast.classList.add('show');
+
+                    // Cacher la notification après 3 secondes
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+
+                    // Réactiver le bouton et cacher le loader
+                    submitBtn.disabled = false;
+                    formLoader.style.display = 'none';
                 }
-            } catch (error) {
-                console.error('Erreur:', error);
-                toast.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-                toast.style.background = '#e74c3c';
-            } finally {
-                // Afficher la notification
-                toast.classList.add('show');
-
-                // Cacher la notification après 3 secondes
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-
-                // Réactiver le bouton et cacher le loader
-                submitBtn.disabled = false;
-                formLoader.style.display = 'none';
-            }
-        });
+            });
+        }
 
         // ========== TÉLÉCHARGEMENT DU CV ==========
         const downloadCV = document.getElementById('downloadCV');
-        downloadCV.addEventListener('click', function (e) {
-            // Vérifier si le fichier CV existe
-            const cvUrl = 'cv.pdf'; // Remplacez par le chemin réel de votre CV
-
-            // Créer une notification de téléchargement
-            const downloadNotification = document.createElement('div');
-            downloadNotification.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 30px;
-                    left: 50%;
-                    transform: translateX(-50%) rotate(-2deg);
-                    background: var(--cv-blue);
-                    color: white;
-                    padding: 20px 30px;
-                    border: 2px solid white;
-                    z-index: 10000;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                    font-family: 'Courier New', monospace;
-                    font-weight: bold;
-                    letter-spacing: 1px;
-                    animation: stampAppear 0.5s ease-out;
-                    text-align: center;
-                ">
-                    <div style="font-size: 1.2rem; margin-bottom: 5px;">
-                        <i class="fas fa-download"></i> TÉLÉCHARGEMENT
+        if (downloadCV) {
+            downloadCV.addEventListener('click', function (e) {
+                const downloadNotification = document.createElement('div');
+                downloadNotification.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 30px;
+                        left: 50%;
+                        transform: translateX(-50%) rotate(-2deg);
+                        background: var(--cv-blue);
+                        color: white;
+                        padding: 20px 30px;
+                        border: 2px solid white;
+                        z-index: 10000;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                        font-family: 'Courier New', monospace;
+                        font-weight: bold;
+                        letter-spacing: 1px;
+                        animation: stampAppear 0.5s ease-out;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 1.2rem; margin-bottom: 5px;">
+                            <i class="fas fa-download"></i> TÉLÉCHARGEMENT
+                        </div>
+                        <div style="font-size: 0.9rem;">Votre CV va être téléchargé</div>
                     </div>
-                    <div style="font-size: 0.9rem;">Votre CV va être téléchargé</div>
-                </div>
-            `;
+                `;
 
-            document.body.appendChild(downloadNotification);
+                document.body.appendChild(downloadNotification);
 
-            // Supprimer la notification après 3 secondes
-            setTimeout(() => {
-                downloadNotification.style.animation = 'stampDisappear 0.5s ease-out forwards';
-                setTimeout(() => downloadNotification.remove(), 500);
-            }, 3000);
-        });
+                setTimeout(() => {
+                    downloadNotification.style.animation = 'stampDisappear 0.5s ease-out forwards';
+                    setTimeout(() => downloadNotification.remove(), 500);
+                }, 3000);
+            });
+        }
 
         // ========== ROTATION ALÉATOIRE DES ÉLÉMENTS ==========
         document.querySelectorAll('.skill-tag, .project-card').forEach(el => {
@@ -2064,32 +2144,6 @@
             });
         });
 
-        // ========== ANIMATION DES TROMBONES ==========
-        document.querySelectorAll('.paper-clip').forEach(clip => {
-            clip.addEventListener('mouseenter', function () {
-                this.style.transition = 'transform 0.3s ease';
-                this.style.transform += ' scale(1.1)';
-            });
-
-            clip.addEventListener('mouseleave', function () {
-                this.style.transform = this.style.transform.replace(' scale(1.1)', '');
-            });
-        });
-
-        // ========== EFFET DE PAPIER FROISSÉ ==========
-        document.addEventListener('click', function (e) {
-            if (e.target.tagName === 'SECTION' || e.target.closest('section')) {
-                const section = e.target.tagName === 'SECTION' ? e.target : e.target.closest('section');
-
-                section.style.transition = 'transform 0.3s ease';
-                section.style.transform = `rotate(${Math.random() * 1 - 0.5}deg)`;
-
-                setTimeout(() => {
-                    section.style.transform = 'rotate(0.2deg)';
-                }, 300);
-            }
-        });
-
         // ========== GESTION RESPONSIVE ==========
         function handleResponsive() {
             const isMobile = window.innerWidth < 768;
@@ -2114,13 +2168,16 @@
                 el.classList.toggle('desktop-only', isMobile);
             });
 
-            // Ajuster la navigation
-            if (isMobile && navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
+            // Ajuster la navigation pour petits écrans
+            const navLinks = document.querySelectorAll('nav a');
+            if (isMobile && navLinks.length > 0) {
+                navLinks.forEach(link => {
+                    link.style.fontSize = '0.7rem';
+                    link.style.padding = '6px 8px';
+                });
             }
         }
 
-        // Détection du changement d'orientation
         window.addEventListener('orientationchange', function () {
             setTimeout(handleResponsive, 100);
         });
@@ -2131,10 +2188,7 @@
         // ========== GESTION DES IMAGES MANQUANTES ==========
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('error', function () {
-                // Ajouter une classe pour indiquer l'erreur
                 this.classList.add('image-error');
-
-                // Optionnel: afficher un message
                 const parent = this.parentElement;
                 if (parent && !parent.querySelector('.image-error-message')) {
                     const errorMsg = document.createElement('div');
@@ -2178,10 +2232,6 @@
                 }
             }
             
-            .fa-spinner {
-                animation: spin 1s linear infinite;
-            }
-            
             @keyframes spin {
                 from { transform: rotate(0deg); }
                 to { transform: rotate(360deg); }
@@ -2215,8 +2265,17 @@
                 animation: fadeIn 0.8s ease-out forwards;
                 opacity: 0;
             }
+            
+            /* Correction pour le header fixe */
+            header {
+                position: -webkit-sticky;
+                position: sticky;
+            }
         `;
         document.head.appendChild(style);
+
+        // Initialiser le responsive
+        handleResponsive();
     </script>
 </body>
 

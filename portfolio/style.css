@@ -1,0 +1,564 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Indie+Flower&family=Special+Elite&display=swap');
+
+:root {
+    --paper-bg: #fdfaf0;
+    --paper-line: #e0d8c3;
+    --ink-black: #2c2c2c;
+    --ink-blue: #2e5a88;
+    --sticker-red: #ff4757;
+    --sticker-yellow: #ffa502;
+    --sticker-blue: #2f3542;
+    --newspaper-serif: 'Special Elite', serif;
+    --comic-font: 'Bangers', cursive;
+    --handwritten: 'Indie Flower', cursive;
+    --radius-rough: 3px 5px 2px 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d8cfbc;
+    /* Desk/Table background */
+    color: var(--ink-black);
+    font-family: var(--newspaper-serif);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Paper Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.03) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Notebook Container */
+.notebook-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    background: var(--paper-bg);
+    min-height: 100vh;
+    padding: 80px 60px;
+    position: relative;
+    box-shadow:
+        5px 5px 30px rgba(0, 0, 0, 0.2),
+        -2px -2px 10px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: rotate(-0.3deg);
+    background-image:
+        linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 30px;
+    /* Lined paper look */
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    /* Hidden by default on desktop */
+    cursor: pointer;
+    font-size: 2rem !important;
+    /* Larger for touch */
+    color: var(--ink-black);
+    padding: 10px;
+    z-index: 3000;
+}
+
+/* Notebook Spiral (Left Side) */
+.notebook-container::after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50px;
+    bottom: 50px;
+    width: 30px;
+    background-image: radial-gradient(circle, #888 20%, transparent 20%);
+    background-size: 30px 40px;
+    z-index: 10;
+}
+
+header {
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 3px double var(--ink-black);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    background: var(--paper-bg);
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header.scrolled {
+    padding: 10px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    display: flex;
+    justify-content: center;
+    /* Center logo on desktop */
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--comic-font);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: var(--ink-black);
+    text-transform: uppercase;
+    transform: rotate(-1deg);
+    display: inline-block;
+}
+
+.logo span {
+    color: var(--sticker-red);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink-black);
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 5px 12px;
+    transition: all 0.2s ease;
+}
+
+nav a.active {
+    background: var(--sticker-red) !important;
+    color: white !important;
+    transform: translateY(2px) rotate(1deg);
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 0, 0.3);
+    /* Highlighter effect */
+    color: var(--ink-blue);
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--ink-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::before {
+    transform: scaleX(1);
+    background: rgba(46, 90, 136, 0.4);
+    height: 10px;
+    z-index: -1;
+}
+
+/* Sections */
+section {
+    margin-bottom: 100px;
+    scroll-margin-top: 100px;
+    /* For sticky nav */
+}
+
+.section-title {
+    font-family: var(--comic-font);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    background: var(--sticker-yellow);
+    display: inline-block;
+    padding: 5px 20px;
+    transform: rotate(1deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero */
+#hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-family: var(--handwritten);
+    font-size: 2rem;
+    color: var(--ink-blue);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Sticker Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-family: var(--comic-font);
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background: var(--sticker-blue);
+    color: white;
+    transform: rotate(-1deg);
+}
+
+.btn-secondary {
+    background: var(--sticker-red);
+    color: white;
+    transform: rotate(2deg);
+}
+
+.btn:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Cards (Like clippings or polaroids) */
+.card {
+    background: var(--paper-bg);
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    margin-bottom: 40px;
+}
+
+/* Tape Effect */
+.card::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    width: 60px;
+    height: 25px;
+    background: rgba(224, 216, 195, 0.6);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Sticker / Badge */
+.sticker {
+    display: inline-block;
+    padding: 5px 15px;
+    font-family: var(--comic-font);
+    font-size: 0.9rem;
+    transform: rotate(calc(var(--rand-rot, 2) * 1deg));
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    border-radius: 2px;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.05);
+    transform: rotate(calc(var(--angle, 0) * 1deg));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-card:nth-child(even) {
+    --angle: 1;
+}
+
+.project-card:nth-child(odd) {
+    --angle: -1;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+    margin-bottom: 15px;
+    border: 10px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Skills (Handwritten list) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.skill-category h3 {
+    font-family: var(--handwritten);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--ink-blue);
+}
+
+.skill-item {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.skill-item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+}
+
+/* Timeline (Dashed line) */
+.timeline {
+    border-left: 2px dashed var(--ink-black);
+    padding-left: 30px;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -41px;
+    top: 10px;
+    width: 20px;
+    height: 2px;
+    background: var(--ink-black);
+}
+
+/* Contact Form as an Index Card */
+.contact-container {
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-top: 15px solid var(--ink-blue);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-bottom: 2px solid var(--ink-blue);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notebook-container {
+        margin: 0;
+        padding: 5px 15px 100px 15px;
+        /* Extra bottom padding for the nav doc */
+        transform: none !important;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .notebook-container::after {
+        display: none;
+    }
+
+    header {
+        position: relative;
+        /* Not sticky on mobile to save space */
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-bottom: 2px dashed #ccc;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    nav {
+        position: fixed;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 400px;
+        z-index: 10000;
+        /* Above everything */
+        background: rgba(253, 250, 240, 0.95);
+        backdrop-filter: blur(8px);
+        padding: 10px 5px;
+        border: 2px solid var(--ink-black);
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none;
+        width: 100%;
+        background: transparent !important;
+        border: none !important;
+        position: static !important;
+    }
+
+    nav a {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 8px 12px !important;
+        font-size: 0.75rem !important;
+        font-family: var(--comic-font);
+        color: var(--ink-black);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        border-radius: 0;
+        transform: none !important;
+    }
+
+    /* Add icons visibility for mobile nav - defined via JS helper or CSS */
+    nav a[href="#hero"]::before {
+        content: "\f015";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.1rem;
+    }
+
+    nav a[href="#about"]::before {
+        content: "\f02d";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.1rem;
+    }
+
+    nav a[href="#skills"]::before {
+        content: "\f040";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.1rem;
+    }
+
+    nav a[href="#projects"]::before {
+        content: "\f07c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.1rem;
+    }
+
+    nav a[href="#contact"]::before {
+        content: "\f0e0";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.1rem;
+    }
+
+    nav a.active {
+        color: var(--sticker-red) !important;
+        background: transparent !important;
+        transform: scale(1.1) !important;
+    }
+
+    #hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding-top: 10px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        width: 100%;
+        display: block;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+}

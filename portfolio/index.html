@@ -1,442 +1,642 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tejiona Kenfack Axel Olivier | Portfolio Développeur</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Axel Tejiona Kenfack — Développeur Full-Stack &amp; Mobile | TKAO.DEV</title>
+  <meta name="description" content="Je conçois et développe des applications web &amp; mobile fiables, rapides et prêtes pour la production — du cahier des charges au déploiement.">
+  <meta name="author" content="Axel Tejiona Kenfack">
 
-    <!-- Meta Tags pour le Partage (Social Preview) -->
-    <meta property="og:title" content="Tejiona Kenfack Axel Olivier | Portfolio Développeur">
-    <meta property="og:description"
-        content="Développeur Full-Stack passionné, transformant vos idées en solutions numériques innovantes.">
-    <meta property="og:image" content="https://axeldev.vercel.app/CAP0.webp">
-    <meta name="twitter:image" content="https://axeldev.vercel.app/CAP0.webp">
+  <!-- ═══ APERÇU DU LIEN (WhatsApp · LinkedIn · Telegram · Discord) ═══
+       Quand tu envoies le lien, ces balises affichent l'image + la phrase d'accroche.
+       ⚠️ Le site doit être EN LIGNE pour que l'aperçu fonctionne (pas en local).
+       Si tu déploies sous une autre adresse que axeldev.vercel.app, remplace
+       le domaine dans og:url, og:image et twitter:image ci-dessous. -->
+  <meta property="og:site_name" content="TKAO.DEV">
+  <meta property="og:title" content="Axel Tejiona Kenfack — Développeur Full-Stack &amp; Mobile">
+  <meta property="og:description" content="Je conçois et développe des applications web &amp; mobile fiables, rapides et prêtes pour la production — du cahier des charges au déploiement.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axeldev.vercel.app/">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://axeldev.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Axel Tejiona Kenfack — Développeur Full-Stack &amp; Mobile">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Axel Tejiona Kenfack — Développeur Full-Stack &amp; Mobile">
+  <meta name="twitter:description" content="Je conçois et développe des applications web &amp; mobile fiables, rapides et prêtes pour la production — du cahier des charges au déploiement.">
+  <meta name="twitter:image" content="https://axeldev.vercel.app/og-image.png">
+  <meta name="theme-color" content="#BE9663">
 
-    <meta property="og:url" content="https://axeldev.vercel.app/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+  <!-- Favicon : étiquette kraft faite main -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%2292%22 height=%2292%22 x=%224%22 y=%224%22 rx=%2210%22 fill=%22%23F4EFE6%22 stroke=%22%23171717%22 stroke-width=%226%22/><text x=%2250%22 y=%2266%22 font-family=%22monospace%22 font-weight=%22900%22 font-size=%2240%22 fill=%22%23E4572E%22 text-anchor=%22middle%22>TK</text></svg>">
 
+  <!-- Typographies : Syne (titres), DM Sans (texte), Space Grotesk (fiches techniques), Caveat (annotations), Allerta Stencil (tampons pochoir) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Caveat:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Indie+Flower&family=Special+Elite&display=swap"
-        rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Pré-cache motion : masque les cibles d'animation AVANT la 1re peinture, puis Motion.js prend le relais.
+       Si GSAP/motion échouent ou si prefers-reduced-motion → tout reste visible (fallback statique élégant). -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduce) {
+        document.documentElement.classList.add("anim");
+        setTimeout(function () {
+          if (!window.__motionReady) document.documentElement.classList.remove("anim");
+        }, 2600);
+      }
+    })();
+  </script>
 </head>
-
 <body>
-    <!-- Background Decorations -->
-    <div class="desk-decoration"
-        style="position: fixed; top: 10%; right: 5%; font-size: 4rem; opacity: 0.1; transform: rotate(15deg); pointer-events: none; z-index: -1;">
-        ☕</div>
-    <div class="desk-decoration"
-        style="position: fixed; bottom: 10%; left: 5%; font-size: 4rem; opacity: 0.1; transform: rotate(-10deg); pointer-events: none; z-index: -1;">
-        ✏️</div>
 
-    <div class="notebook-container">
-        <div class="notebook-spiral"></div>
+  <a class="skip-link" href="#main">Aller au contenu</a>
 
-        <header>
-            <div class="header-top">
-                <div class="logo">TKAO<span>.</span></div>
-                <!-- Mobile Menu Toggle inside header for sticky behavior -->
-                <div class="menu-toggle" id="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+  <!-- Ruban de progression (masking tape) -->
+  <div class="scroll-tape" aria-hidden="true"><div class="scroll-tape-fill" id="scrollTapeFill"></div></div>
+
+  <!-- Curseur custom (desktop uniquement) -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor-dot"></span>
+    <span class="cursor-chip" id="cursorChip">VIEW</span>
+  </div>
+
+  <!-- ═══ NAVIGATION : BANDE DE PAPIER FIXÉE EN HAUT ═══ -->
+  <div class="nav-wrap">
+    <header class="paper-strip" id="mainNav">
+      <span class="strip-tape strip-tape-l" aria-hidden="true"></span>
+      <span class="strip-tape strip-tape-r" aria-hidden="true"></span>
+
+      <a href="#hero" class="nav-brand" data-cursor="go" aria-label="TKAO.DEV — retour en haut de page">TKAO<span class="brand-dot">.</span>DEV</a>
+
+      <nav class="nav-tabs" aria-label="Navigation principale">
+        <a href="#hero" class="nav-tab active" data-i18n="navHome">Accueil</a>
+        <a href="#about" class="nav-tab" data-i18n="navJournal">Parcours</a>
+        <a href="#skills" class="nav-tab" data-i18n="navNotes">Compétences</a>
+        <a href="#projects" class="nav-tab" data-i18n="navProjects">Projets</a>
+        <a href="#contact" class="nav-tab" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <div class="nav-tools">
+        <button class="lang-btn" id="langToggle" type="button" aria-label="Changer de langue">EN</button>
+        <button class="burger" id="hamburgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Tiroir mobile : feuille dépliée -->
+  <div class="drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-drawer-close></div>
+    <nav class="drawer-sheet" aria-label="Menu mobile">
+      <span class="tape tape-tc" aria-hidden="true"></span>
+      <a href="#hero" class="drawer-link" data-i18n="navHome">Accueil</a>
+      <a href="#about" class="drawer-link" data-i18n="navJournal">Parcours</a>
+      <a href="#skills" class="drawer-link" data-i18n="navNotes">Compétences</a>
+      <a href="#projects" class="drawer-link" data-i18n="navProjects">Projets</a>
+      <a href="#contact" class="drawer-link" data-i18n="navContact">Contact</a>
+      <p class="drawer-hand" aria-hidden="true">TKAO.DEV — atelier numérique</p>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ═══ HERO : LA TABLE SE CONSTRUIT ═══ -->
+    <section id="hero" class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-ghost" data-plx="0.3">FOLIO&nbsp;—&nbsp;2026&nbsp;—&nbsp;NGAOUNDÉRÉ&nbsp;—&nbsp;FOLIO&nbsp;—&nbsp;2026</span>
+        <span class="scrap scrap-tag" data-plx="0.8" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none">
+            <!-- ficelle -->
+            <path d="M59 121 C 44 92, 54 52, 90 34 C 120 20, 142 34, 148 58" stroke="#8A6539" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+            <g transform="rotate(16 90 130)">
+              <path d="M52 98 h82 a6 6 0 0 1 6 6 v52 a6 6 0 0 1 -6 6 h-82 l-27 -32 z" fill="#D9BE90" stroke="#8A6539" stroke-width="2.4"/>
+              <circle cx="58" cy="130" r="7" fill="#BE9663" stroke="#8A6539" stroke-width="2.4"/>
+              <text x="76" y="127" font-family="'Space Grotesk',monospace" font-weight="700" font-size="17" letter-spacing="2" fill="#57524B">TKAO</text>
+              <text x="76" y="146" font-family="'Space Grotesk',monospace" font-weight="600" font-size="10.5" letter-spacing="3" fill="#8A6539">N°001</text>
+            </g>
+          </svg>
+        </span>
+        <span class="scrap scrap-kraft" data-plx="-0.5"></span>
+        <span class="scrap scrap-pencil" data-plx="0.55" aria-hidden="true">
+          <svg viewBox="0 0 168 30" fill="none">
+            <g transform="rotate(-4 84 15)">
+              <path d="M30 8 L12 14.5 L30 21 Z" fill="#EFE3CC"/>
+              <path d="M18.5 12.4 L12 14.5 L18.5 16.6 Z" fill="#2E2A26"/>
+              <rect x="30" y="8" width="106" height="13" rx="1.5" fill="#E8C547"/>
+              <rect x="30" y="8" width="106" height="4.2" fill="#F2DA7B" opacity="0.85"/>
+              <rect x="45" y="9" width="1.6" height="11" fill="#171717" opacity="0.18"/>
+              <rect x="70" y="9" width="1.6" height="11" fill="#171717" opacity="0.18"/>
+              <rect x="95" y="9" width="1.6" height="11" fill="#171717" opacity="0.18"/>
+              <rect x="136" y="8" width="7" height="13" fill="#B9BEC4"/>
+              <rect x="143" y="8" width="10" height="13" rx="3.5" fill="#E89B8E"/>
+            </g>
+          </svg>
+        </span>
+        <span class="dot-sticker dot-sticker-yellow" data-plx="1"></span>
+        <span class="dot-sticker dot-sticker-cobalt" data-plx="-0.8"></span>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Feuille d'identité -->
+        <div class="hero-identity">
+          <div class="sheet identity-sheet" data-anim="sheet">
+            <span class="tape tape-tc" aria-hidden="true"></span>
+            <span class="staple staple-br" aria-hidden="true"></span>
+            <span class="corner-fold" aria-hidden="true"></span>
+
+            <p class="status-tag" data-anim="fade"><span class="status-dot" aria-hidden="true"></span><span data-i18n="availability">En recherche de stage ou alternance • Cameroun ou à distance</span></p>
+
+            <h1 class="hero-title">
+              <span class="hero-wordmark mask" data-anim="wordmark"><span class="mask-inner">TKAO<span class="dev-chip">.DEV</span></span></span>
+              <span class="hero-name" data-anim="name">Tejiona Kenfack Axel</span>
+            </h1>
+
+            <p class="role-stamp rubber-stamp" data-anim="stamp" data-i18n="heroTitleSub">Développeur Full-Stack & Mobile</p>
+
+            <p class="hand-note" data-anim="hand" data-i18n="heroHandwrite">« Sérieux dans le code, soigné dans le détail. »</p>
+
+            <p class="manifesto" data-anim="fade" data-i18n="heroQuote">Je conçois et développe des applications web &amp; mobile fiables, rapides et prêtes pour la production — du cahier des charges au déploiement.</p>
+
+            <div class="hero-actions" data-anim="actions">
+              <a href="#projects" class="btn-ink" data-cursor="go"><span data-i18n="exploreProjects">Voir mes projets</span><span class="btn-arrow" aria-hidden="true">→</span></a>
+              <a href="CV_Axel_Candidature.pdf" class="btn-label" download="CV_Axel_Tejiona.pdf" data-cursor="go"><span data-i18n="downloadCV">Télécharger mon CV</span><span class="mini-stamp" aria-hidden="true">PDF</span></a>
             </div>
-            <p
-                style="font-family: 'Indie Flower', cursive; color: var(--ink-blue); margin-top: -5px; font-weight: bold;">
-                Journal de Bord : Dev Full-Stack</p>
-            <nav id="navbar">
-                <ul id="nav-list">
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#about">Journal</a></li>
-                    <li><a href="#skills">Notes</a></li>
-                    <li><a href="#projects">Archives</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+          </div>
+        </div>
+
+        <!-- Le bureau photo : tirage + post-it + ticket -->
+        <div class="hero-desk" data-anim="desk">
+          <div class="photo-tilt" id="photoTilt">
+            <figure class="polaroid" id="heroPhoto" data-cursor="open" tabindex="0" role="button" aria-label="Agrandir la photographie d'Axel">
+              <span class="tape tape-tl" aria-hidden="true"></span>
+              <span class="tape tape-tr" aria-hidden="true"></span>
+              <img src="CAP0.webp" alt="Photographie de Tejiona Kenfack Axel dans son atelier" width="480" height="600" fetchpriority="high" decoding="async" data-fallback="CAP0.webp">
+              <figcaption class="polaroid-caption">
+                <span class="polaroid-hand">Axel // TKAO</span>
+                <span class="polaroid-date">Ngaoundéré '26</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <aside class="sticky-note" data-anim="sticky" data-cursor="move">
+            <span class="pushpin" aria-hidden="true"></span>
+            <span class="sticky-line">BUILD → CREATE → REPEAT</span>
+            <span class="sticky-hash">#SoftwareCraft</span>
+          </aside>
+
+          <div class="ticket-stub" data-anim="ticket" aria-hidden="true">
+            <span class="ticket-brand">TKAO.DEV</span>
+            <span class="ticket-sep"></span>
+            <span class="ticket-row">ATELIER NUMÉRIQUE — BUREAU 001</span>
+            <span class="ticket-row ticket-faint">NGAOUNDÉRÉ, CM</span>
+          </div>
+
+          <svg class="desk-clip" viewBox="0 0 30 62" aria-hidden="true"><path d="M9 58 V 22 a6 6 0 0 1 12 0 v 26" fill="none" stroke="#9AA0A6" stroke-width="3.4" stroke-linecap="round"/><path d="M13 58 V 24" fill="none" stroke="#C7CBD1" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#about" data-cursor="go" aria-label="Faire défiler vers le parcours">
+        <span class="scroll-hint-hand" aria-hidden="true">faites défiler</span>
+        <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
+      </a>
+    </section>
+
+    <div class="torn" aria-hidden="true"></div>
+
+    <!-- Bande de scotch défilante : l'atelier n'arrête jamais de bouger -->
+    <div class="tape-marquee" aria-hidden="true">
+      <div class="tape-marquee-track">
+        <div class="tape-marquee-group">
+          <span>TKAO.DEV — ATELIER FULL-STACK</span><span class="mq-accent">✦</span><span>NGAOUNDÉRÉ, CAMEROUN</span><span class="mq-accent">✦</span><span>PORTFOLIO — FOLIO 2026</span><span class="mq-accent">✦</span>
+        </div>
+        <div class="tape-marquee-group">
+          <span>TKAO.DEV — ATELIER FULL-STACK</span><span class="mq-accent">✦</span><span>NGAOUNDÉRÉ, CAMEROUN</span><span class="mq-accent">✦</span><span>PORTFOLIO — FOLIO 2026</span><span class="mq-accent">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ 01 PARCOURS : DOSSIER D'ARCHIVES ═══ -->
+    <section id="about" class="section journey">
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-tag" data-i18n="journalLabel">01 // Historique &amp; Repères</span>
+          <h2 class="sec-title">
+            <span class="sec-title-text" data-i18n="journalTitle">Parcours</span>
+            <svg class="scribble" viewBox="0 0 240 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 15 C 50 5, 95 21, 140 11 S 215 7, 236 14"/></svg>
+            <span class="rubber-stamp stamp-olive sec-stamp" aria-hidden="true">IUT GL</span>
+          </h2>
         </header>
 
-        <section id="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Tejiona Kenfack <span style="color:var(--sticker-red)">Axel Olivier</span></h1>
-                <p class="hero-subtitle">Développeur Full-Stack</p>
-                <div
-                    style="font-family: 'Indie Flower', cursive; font-size: 1.3rem; border-left: 4px solid var(--sticker-yellow); padding-left: 20px; margin: 25px 0; background: rgba(254, 230, 0, 0.05);">
-                    "Jeune diplômé en Génie Logiciel, passionné par le développement web et les technologies backend. Je
-                    transforme vos idées en solutions numériques innovantes."
-                </div>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">Explorer mes Archives</a>
-                    <a href="#" class="btn btn-secondary" id="downloadCV"><i class="fas fa-download"></i> Télécharger
-                        CV</a>
-                </div>
-            </div>
-            <!-- Polaroid Profil -->
-            <div class="card"
-                style="max-width: 280px; transform: rotate(3deg); margin: 20px auto; background: #fff; padding: 15px 15px 40px 15px; box-shadow: 10px 10px 30px rgba(0,0,0,0.1);">
-                <div class="project-image" style="height: 250px; overflow: hidden; border: none; margin-bottom: 0;">
-                    <img src="CAP0.webp" alt="Axel Olivier" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <p
-                    style="text-align: center; font-family: 'Indie Flower', cursive; margin-top: 20px; font-size: 1.2rem; color: #444;">
-                    Axel - TKAO</p>
-                <div
-                    style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-5deg); width: 100px; height: 35px; background: rgba(0,0,0,0.05); box-shadow: 1px 1px 3px rgba(0,0,0,0.05);">
-                </div>
-            </div>
-        </section>
+        <div class="folder" data-reveal="drop">
+          <div class="folder-tab tab-a"><span class="tab-main" data-i18n="educationTitle">Formation Académique</span><span class="tab-sub">ACADEMIA</span></div>
+          <div class="folder-tab tab-b"><span class="tab-main" data-i18n="experienceTitle">Expérience Pratique</span><span class="tab-sub">STAGE &amp; TERRAIN</span></div>
 
-        <section id="about">
-            <h2 class="section-title">Journal de Bord (Parcours)</h2>
+          <div class="folder-body">
+            <!-- Colonne formation -->
+            <div class="folder-col">
+              <article class="doc doc-bristol" style="--rot:-0.9deg" data-reveal="drop">
+                <span class="staple doc-staple" aria-hidden="true"></span>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2024 — 2025</span>
+                  <span class="doc-loc">Ngaoundéré, CM</span>
+                </header>
+                <h3 class="doc-title" data-i18n="degree1">Licence Technologique en Génie Logiciel</h3>
+                <p class="doc-org">IUT de Ngaoundéré</p>
+                <p class="doc-desc" data-i18n="degree1Desc">Dernière année du cursus — consolidée par des stages en Laravel et CodeIgniter et des projets personnels aboutis (LMS, application mobile Flutter).</p>
+                <ul class="doc-tags"><li class="paper-badge">Génie Logiciel</li><li class="paper-badge">IUT Ngaoundéré</li></ul>
+              </article>
 
-            <div style="margin-bottom: 40px;">
-                <h3
-                    style="font-family: 'Bangers', cursive; color: var(--sticker-blue); font-size: 2rem; margin-bottom: 20px;">
-                    🎓 Formation</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <p class="sticker"
-                            style="background: var(--sticker-yellow); font-size: 0.8rem; margin-bottom: 10px;">2024 –
-                            2025</p>
-                        <h3>Licence Technologique en Génie Logiciel</h3>
-                        <p style="font-family: 'Indie Flower', cursive; color: #666;">IUT de Ngaoundéré</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="sticker"
-                            style="background: var(--sticker-yellow); font-size: 0.8rem; margin-bottom: 10px;">2022 –
-                            2024</p>
-                        <h3>DUT en Génie Logiciel</h3>
-                        <p style="font-family: 'Indie Flower', cursive; color: #666;">IUT de Ngaoundéré</p>
-                    </div>
-                </div>
+              <article class="doc doc-bristol" style="--rot:0.8deg" data-reveal="drop">
+                <svg class="doc-clip" viewBox="0 0 30 62" aria-hidden="true"><path d="M9 58 V 22 a6 6 0 0 1 12 0 v 26" fill="none" stroke="#9AA0A6" stroke-width="3.4" stroke-linecap="round"/></svg>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2022 — 2024</span>
+                  <span class="doc-loc">Ngaoundéré, CM</span>
+                </header>
+                <h3 class="doc-title" data-i18n="degree2">DUT en Génie Logiciel</h3>
+                <p class="doc-org">IUT de Ngaoundéré</p>
+                <p class="doc-desc" data-i18n="degree2Desc">Les fondamentaux du métier : algorithmique, programmation orientée objet, bases de données relationnelles et développement web.</p>
+                <ul class="doc-tags"><li class="paper-badge">Algorithmique</li><li class="paper-badge">POO</li><li class="paper-badge">SQL</li></ul>
+              </article>
             </div>
 
-            <div>
-                <h3
-                    style="font-family: 'Bangers', cursive; color: var(--sticker-red); font-size: 2rem; margin-bottom: 20px;">
-                    💼 Expériences</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <p class="sticker"
-                            style="background: var(--sticker-blue); color: white; font-size: 0.8rem; margin-bottom: 10px;">
-                            2025</p>
-                        <h3>Développeur Full Stack – Stage</h3>
-                        <p style="font-family: 'Indie Flower', cursive; color: #666;">IUT de Ngaoundéré</p>
-                        <p>Applications web complètes avec Laravel et MySQL.</p>
-                        <div class="tech-tags" style="margin-top: 10px;">
-                            <span class="tech-tag">Laravel</span> <span class="tech-tag">MySQL</span> <span
-                                class="tech-tag">MongoDB</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="sticker"
-                            style="background: var(--sticker-blue); color: white; font-size: 0.8rem; margin-bottom: 10px;">
-                            2024</p>
-                        <h3>Développeur Backend – Stage</h3>
-                        <p style="font-family: 'Indie Flower', cursive; color: #666;">Sygalin</p>
-                        <p>Conception d'API REST avec CodeIgniter.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="sticker"
-                            style="background: var(--sticker-blue); color: white; font-size: 0.8rem; margin-bottom: 10px;">
-                            2023</p>
-                        <h3>Stage Ouvrier</h3>
-                        <p style="font-family: 'Indie Flower', cursive; color: #666;">IUT de Ngaoundéré</p>
-                        <p>Analyses de données avec Sphinx.</p>
-                    </div>
-                </div>
+            <!-- Colonne expérience -->
+            <div class="folder-col folder-col-b">
+              <article class="doc doc-manila" style="--rot:0.7deg" data-reveal="drop">
+                <span class="tape tape-tc tape-short" aria-hidden="true"></span>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2025</span>
+                  <span class="doc-loc">IUT de Ngaoundéré</span>
+                </header>
+                <h3 class="doc-title" data-i18n="exp1Title">Développeur Full-Stack (Stage)</h3>
+                <p class="doc-org">IUT de Ngaoundéré</p>
+                <p class="doc-desc" data-i18n="exp1Desc">Conception et développement d'applications web internes avec Laravel et MySQL. Intégration d'interfaces responsives et structuration de données NoSQL avec MongoDB.</p>
+                <ul class="doc-tags"><li class="paper-badge">Laravel</li><li class="paper-badge">MySQL</li><li class="paper-badge">MongoDB</li><li class="paper-badge">Bootstrap</li></ul>
+              </article>
+
+              <article class="doc doc-note" style="--rot:-0.6deg" data-reveal="drop">
+                <span class="staple doc-staple doc-staple-l" aria-hidden="true"></span>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2024</span>
+                  <span class="doc-loc">Sygalin SAS</span>
+                </header>
+                <h3 class="doc-title" data-i18n="exp2Title">Développeur Backend (Stage)</h3>
+                <p class="doc-org">Sygalin SAS</p>
+                <p class="doc-desc" data-i18n="exp2Desc">Développement de modules backend et optimisation de requêtes SQL sur les applications de production de l'entreprise.</p>
+                <ul class="doc-tags"><li class="paper-badge">CodeIgniter</li><li class="paper-badge">PHP</li><li class="paper-badge">MySQL</li></ul>
+              </article>
+
+              <article class="doc doc-ticket" style="--rot:0.5deg" data-reveal="drop">
+                <span class="pushpin pushpin-olive" aria-hidden="true"></span>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2023</span>
+                  <span class="doc-loc">IUT de Ngaoundéré</span>
+                </header>
+                <h3 class="doc-title" data-i18n="exp3Title">Stage Ouvrier — Enquêtes &amp; Données</h3>
+                <p class="doc-org">IUT de Ngaoundéré</p>
+                <p class="doc-desc" data-i18n="exp3Desc">Conception de questionnaires et traitement de données d'enquête avec l'outil Sphinx.</p>
+                <ul class="doc-tags"><li class="paper-badge">Sphinx</li><li class="paper-badge">Analyse de données</li></ul>
+              </article>
+
+              <article class="doc doc-ticket" style="--rot:-0.7deg" data-reveal="drop">
+                <span class="pushpin pushpin-olive" aria-hidden="true"></span>
+                <header class="doc-meta">
+                  <span class="doc-date-stamp">2021</span>
+                  <span class="doc-loc">Hôpital Protestant</span>
+                </header>
+                <h3 class="doc-title" data-i18n="exp4Title">Technicien Réseau &amp; Web (Stage)</h3>
+                <p class="doc-org">Hôpital Protestant de Ngaoundéré</p>
+                <p class="doc-desc" data-i18n="exp4Desc">Maintenance du réseau et initiation au développement web en environnement de production réel.</p>
+                <ul class="doc-tags"><li class="paper-badge">Réseaux</li><li class="paper-badge">Bases de données</li><li class="paper-badge">Web</li></ul>
+              </article>
             </div>
-        </section>
+          </div>
+          <span class="fluted-edge" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
 
-        <section id="skills">
-            <h2 class="section-title" style="background: var(--sticker-yellow);">Notes Techniques</h2>
-            <div class="skills-grid">
-                <div class="card" style="transform: rotate(-1deg); border-left: 5px solid var(--sticker-blue);">
-                    <h3
-                        style="font-family: 'Bangers', cursive; font-size: 1.8rem; margin-bottom: 15px; color: var(--ink-blue);">
-                        Backend & DB</h3>
-                    <div class="skill-item">PHP / Laravel (85%)</div>
-                    <div class="skill-item">MySQL / MongoDB (95%)</div>
-                    <div class="skill-item">Node.js (65%)</div>
-                    <div class="skill-item">Java / Java EE (65%)</div>
-                </div>
-                <div class="card" style="transform: rotate(1.5deg); border-left: 5px solid var(--sticker-red);">
-                    <h3
-                        style="font-family: 'Bangers', cursive; font-size: 1.8rem; margin-bottom: 15px; color: var(--sticker-red);">
-                        Frontend & Mobile</h3>
-                    <div class="skill-item">HTML5 / CSS3 (95%)</div>
-                    <div class="skill-item">JavaScript / React (60%)</div>
-                    <div class="skill-item">Bootstrap / Tailwind (85%)</div>
-                    <div class="skill-item">Flutter / React Native (55%)</div>
-                </div>
-                <div class="card" style="transform: rotate(-0.5deg); border-left: 5px solid #27ae60;">
-                    <h3
-                        style="font-family: 'Bangers', cursive; font-size: 1.8rem; margin-bottom: 15px; color: #27ae60;">
-                        Outils</h3>
-                    <div class="skill-item">Git / GitHub (55%)</div>
-                    <div class="skill-item">Méthodes Agiles (70%)</div>
-                    <div class="skill-item">Figma Design</div>
-                </div>
+    <div class="torn torn-b" aria-hidden="true"></div>
+
+    <!-- ═══ 02 COMPÉTENCES : STICKERS DÉPOSÉS SUR PANNEAUX ═══ -->
+    <section id="skills" class="section skills">
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-tag" data-i18n="skillsLabel">02 // Stack &amp; Outils</span>
+          <h2 class="sec-title">
+            <span class="sec-title-text" data-i18n="skillsTitle">Compétences</span>
+            <svg class="scribble scribble-cobalt" viewBox="0 0 240 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 12 C 60 20, 110 4, 160 13 S 220 17, 236 10"/></svg>
+            <span class="rubber-stamp sec-stamp" aria-hidden="true">TESTÉ</span>
+          </h2>
+        </header>
+
+        <div class="peg-grid">
+          <div class="peg-board" style="--rot:-0.6deg" data-reveal="drop">
+            <span class="tape tape-tc tape-washi-vermilion" aria-hidden="true"></span>
+            <h3 class="peg-title"><span data-i18n="catBackend">Backend &amp; BDD</span><span class="peg-tag peg-tag-vermilion">CORE</span></h3>
+            <ul class="sticker-cloud">
+              <li><span class="sticker" data-cursor="move" style="--rot:-1.6deg">PHP / Laravel<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:1.2deg">MySQL / MongoDB<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:-0.8deg">CodeIgniter<span class="level level-2" data-i18n="levelAdvanced">Avancé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:1.8deg">Django<span class="level level-4" data-i18n="levelLearning">En cours</span></span></li>
+            </ul>
+          </div>
+
+          <div class="peg-board" style="--rot:0.5deg" data-reveal="drop">
+            <span class="pushpin" aria-hidden="true"></span>
+            <h3 class="peg-title"><span data-i18n="catFrontend">Frontend &amp; Mobile</span><span class="peg-tag peg-tag-cobalt">UI / CLIENT</span></h3>
+            <ul class="sticker-cloud">
+              <li><span class="sticker" data-cursor="move" style="--rot:1.4deg">HTML5 / CSS3<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:-1.2deg">JavaScript<span class="level level-2" data-i18n="levelAdvanced">Avancé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:0.9deg">Bootstrap<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:-1.8deg">Flutter<span class="level level-2" data-i18n="levelAdvanced">Avancé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:1.1deg">React Native / Expo<span class="level level-3" data-i18n="levelPractical">Pratique</span></span></li>
+            </ul>
+          </div>
+
+          <div class="peg-board" style="--rot:-0.35deg" data-reveal="drop">
+            <span class="staple peg-staple" aria-hidden="true"></span>
+            <h3 class="peg-title"><span data-i18n="catTools">Outils, Méthodes &amp; Langues</span><span class="peg-tag peg-tag-olive">DEVOPS</span></h3>
+            <ul class="sticker-cloud">
+              <li><span class="sticker sticker-round" data-cursor="move" style="--rot:-2deg">Git / GitHub<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:1.1deg">Méthodes Agiles<span class="level level-2" data-i18n="levelAdvanced">Avancé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:-0.7deg">Français — natif<span class="level level-1" data-i18n="levelMastered">Maîtrisé</span></span></li>
+              <li><span class="sticker" data-cursor="move" style="--rot:0.8deg">Anglais — intermédiaire<span class="level level-3" data-i18n="levelPractical">Pratique</span></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="skills-hand hand-note" aria-hidden="true">collées au fur et à mesure — rien d'inutile&nbsp;↓</p>
+        <p class="skills-hand hand-note" data-i18n="beyondCode">et quand je ne code pas : mythologie grecque · jeux vidéo · lecture&nbsp;✎</p>
+      </div>
+    </section>
+
+    <div class="torn" aria-hidden="true"></div>
+
+    <!-- ═══ 03 PROJETS : OBJETS POSÉS SUR LE BUREAU ═══ -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-tag" data-i18n="projectsLabel">03 // Réalisations Concrètes</span>
+          <h2 class="sec-title">
+            <span class="sec-title-text" data-i18n="projectsTitle">Projets</span>
+            <svg class="scribble" viewBox="0 0 240 24" aria-hidden="true" preserveAspectRatio="none"><path d="M6 14 C 55 6, 100 20, 150 10 S 220 9, 235 15"/></svg>
+            <span class="rubber-stamp sec-stamp" aria-hidden="true">PRODUCTION</span>
+          </h2>
+          <p class="sec-hand hand-note" data-i18n="projectsHand">chaque pièce est un vrai projet — ouvre le dossier ↓</p>
+        </header>
+
+        <div class="work-board">
+
+          <!-- 01 · Photographie imprimée -->
+          <article class="obj obj-photo" style="--rot:-0.8deg" data-reveal="drop" data-cursor="view" data-project tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="obj-inner">
+              <span class="tape tape-tl tape-washi-cobalt" aria-hidden="true"></span>
+              <span class="hand-appear" aria-hidden="true">voir le dossier →</span>
+              <figure class="print-photo"><img src="CAP1.webp" alt="Gestion de Bulletin Scolaire" loading="lazy" decoding="async" width="800" height="500" data-fallback="CAP1.webp"></figure>
+              <div class="obj-caption">
+                <span class="obj-num">N°01</span>
+                <h3 class="obj-title" data-i18n="proj1Title">Gestion des Notes Scolaires</h3>
+              </div>
+              <p class="obj-desc" data-i18n="proj1Desc">Application de saisie et de calcul automatique des bulletins scolaires : saisissez les notes, le bulletin se calcule tout seul.</p>
+              <ul class="tech-stickers"><li>PHP</li><li>Laravel</li><li>MySQL</li><li>Bootstrap</li></ul>
+              <div class="obj-actions"><a class="link-tag" href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go" data-stop><span data-i18n="btnCode">Code Source →</span></a></div>
             </div>
-        </section>
+          </article>
 
-        <section id="projects">
-            <h2 class="section-title" style="background: var(--sticker-red); color: white;">Archives des Projets</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="card project-card" style="--angle: -1.5">
-                    <div class="project-image">
-                        <img src="CAP1.webp" alt="Gestion de bulletin"
-                            style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">Gestion de Bulletin Scolaire
-                    </h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">Solution en ligne pour la gestion des notes et
-                        bulletins scolaires.</p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: var(--sticker-yellow);">PHP</span>
-                        <span class="sticker" style="background: var(--sticker-blue); color: white;">MySQL</span>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="card project-card" style="--angle: 1">
-                    <div class="project-image">
-                        <img src="CAP2.webp" alt="LMS" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">Plateforme LMS Pro</h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">Système complet d'apprentissage en ligne avec classes
-                        virtuelles.</p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: var(--sticker-red); color: white;">LARAVEL</span>
-                        <span class="sticker" style="background: var(--sticker-yellow);">JS</span>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="card project-card" style="--angle: -1">
-                    <div class="project-image">
-                        <img src="CAP3.webp" alt="CamerFood" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">CamerFood</h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">Application de recettes camerounaises avec recherche
-                        avancée.</p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: var(--sticker-blue); color: white;">PHP</span>
-                        <span class="sticker" style="background: #27ae60; color: white;">MONGODB</span>
-                    </div>
-                </div>
-
-                <div class="card project-card" style="--angle: -1">
-                    <div class="project-image">
-                        <img src="CAP4.webp" alt="QR presence" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">QR PRESENCE</h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;"> Système de Pointage Intelligent par QR Code Crypté
-                    </p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: var(--sticker-blue); color: white;">PHP</span>
-                        <span class="sticker" style="background: #27ae60; color: white;"> MySQL</span>
-                        <span class="sticker" style="background: var(--sticker-blue); color: white;">Bootstrap</span>
-                        <span class="sticker" style="background: #27ae60; color: white;">Html5-QRCode </span>
-                    </div>
-                </div>
-
-                <!-- Project 5: Recovision -->
-                <div class="card project-card" style="--angle: 1.5">
-                    <div class="project-image"
-                        style="display: flex; align-items: center; justify-content: center; background: #f0f0f0;">
-                        <i class="fas fa-eye" style="font-size: 5rem; color: #02569B;"></i>
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">Recovision</h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">Assistance à la vision mobile intelligente pour
-                        malvoyants.</p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: #02569B; color: white;">FLUTTER</span>
-                        <span class="sticker" style="background: #00B4AB; color: white;">DART</span>
-                        <span class="sticker" style="background: #27ae60; color: white;">AI</span>
-                    </div>
-                </div>
-
-                <!-- Project 6: ZenithFlow -->
-                <div class="card project-card" style="--angle: -2">
-                    <div class="project-image"
-                        style="display: flex; align-items: center; justify-content: center; background: #f0f0f0;">
-                        <i class="fas fa-wallet" style="font-size: 5rem; color: #ffa502;"></i>
-                    </div>
-                    <h3 style="margin-top: 15px; font-family: 'Special Elite', cursive;">ZenithFlow</h3>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">Application de gestion financière personnelle
-                        intuitive.</p>
-                    <div style="margin-top: 15px;">
-                        <span class="sticker" style="background: #61DAFB; color: #333;">REACT NATIVE</span>
-                        <span class="sticker" style="background: #000020; color: white;">EXPO GO</span>
-                        <span class="sticker" style="background: var(--sticker-yellow);">JS</span>
-                    </div>
-                </div>
+          <!-- 02 · Dossier agrafé -->
+          <article class="obj obj-folder" style="--rot:0.9deg" data-reveal="drop" data-cursor="view" data-project tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="obj-inner">
+              <span class="folder-back" aria-hidden="true"></span>
+              <span class="folder-staples" aria-hidden="true"><i></i><i></i></span>
+              <span class="folder-tab-label" aria-hidden="true">LMS</span>
+              <figure class="folder-photo"><img src="CAP2.webp" alt="Plateforme LMS Pro" loading="lazy" decoding="async" width="800" height="500" data-fallback="CAP2.webp"></figure>
+              <div class="obj-caption">
+                <span class="obj-num">N°02</span>
+                <h3 class="obj-title" data-i18n="proj2Title">Plateforme LMS</h3>
+              </div>
+              <p class="obj-desc" data-i18n="proj2Desc">Système de gestion de formation en ligne : cours, utilisateurs et suivi de progression des apprenants.</p>
+              <ul class="tech-stickers"><li>PHP</li><li>Laravel</li><li>MySQL</li><li>Bootstrap</li></ul>
+              <div class="obj-actions"><a class="link-tag" href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go" data-stop><span data-i18n="btnCode">Code Source →</span></a></div>
             </div>
-        </section>
+          </article>
 
-        <section id="contact">
-            <h2 class="section-title">Laisser une Note</h2>
-            <div class="contact-container"
-                style="background: white; border: 2px solid var(--ink-black); padding: 30px; transform: rotate(0.5deg);">
-                <div style="display: flex; flex-wrap: wrap; gap: 40px;">
-                    <div style="flex: 1; min-width: 250px;">
-                        <h3 style="font-family: 'Bangers', cursive; font-size: 1.8rem; margin-bottom: 20px;">Mes Canaux
-                        </h3>
-                        <p class="contact-item"><i class="fas fa-envelope"></i> axeltejiona@gmail.com</p>
-                        <p class="contact-item"><i class="fas fa-phone"></i> +237 692795336</p>
-                        <p class="contact-item"><i class="fas fa-map-marker-alt"></i> Ngaoundéré, Cameroun</p>
-
-                        <div class="social-links" style="margin-top: 25px;">
-                            <a href="https://github.com/axelolivier24" target="_blank" class="social-link"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/axel-olivier-tejiona-1a5a33321" target="_blank"
-                                class="social-link"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://wa.me/237692795336" target="_blank" class="social-link"><i
-                                    class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-
-                    <div style="flex: 1.5; min-width: 300px;">
-                        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                            <input type="hidden" name="access_key" value="36dbda8d-b17d-4536-844e-2962fd535170">
-                            <input type="hidden" name="subject" value="Nouveau contact via Portfolio - Notebook">
-
-                            <div class="form-group">
-                                <label for="name">Votre Signature :</label>
-                                <input type="text" id="name" name="name" placeholder="Nom complet..." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Votre Courriel :</label>
-                                <input type="email" id="email" name="email" placeholder="email@exemple.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Note de Service :</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Votre message ici..."
-                                    required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">Envoyer la
-                                Note</button>
-                        </form>
-                    </div>
-                </div>
+          <!-- 03 · Affiche épinglée -->
+          <article class="obj obj-poster" style="--rot:-1.1deg" data-reveal="drop" data-cursor="view" data-project tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="obj-inner">
+              <span class="pushpin pushpin-vermilion" aria-hidden="true"></span>
+              <span class="round-badge" aria-hidden="true">QR</span>
+              <span class="obj-num" hidden aria-hidden="true">N°03</span>
+              <p class="poster-kicker">AFFICHE — N°03</p>
+              <h3 class="poster-title">QR<br>PRESENCE</h3>
+              <figure class="poster-photo"><img src="CAP4.webp" alt="QR PRESENCE" loading="lazy" decoding="async" width="800" height="500" data-fallback="CAP4.webp"></figure>
+              <span class="barcode" aria-hidden="true"></span>
+              <span class="barcode-num" aria-hidden="true">QR·SCAN·2026·CM</span>
+              <p class="obj-desc" data-i18n="proj3Desc">Application web de pointage automatisé : un scan de QR Code suffit pour enregistrer les présences, sans feuille d'émargement.</p>
+              <ul class="tech-stickers"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Scan QR</li></ul>
+              <div class="obj-actions"><a class="link-tag" href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go" data-stop><span data-i18n="btnCode">Code Source →</span></a></div>
             </div>
-        </section>
+          </article>
 
-        <footer
-            style="text-align: center; margin-top: 80px; padding: 50px 0; border-top: 3px dashed #ccc; font-family: 'Indie Flower', cursive;">
-            <p style="font-size: 1.2rem; color: var(--ink-black);">Propriété exclusive de <strong>Tejiona Kenfack Axel
-                    Olivier</strong></p>
-            <p style="font-size: 0.9rem; color: #888; margin-top: 10px;">&copy; Tous Droits Réservés - Edition 2026</p>
-        </footer>
+          <!-- 04 · Lettre : assistant visuel -->
+          <article class="obj obj-folded" style="--rot:1deg" data-reveal="drop" data-cursor="view" data-project tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="obj-inner letter">
+              <svg class="doc-clip" viewBox="0 0 30 62" aria-hidden="true"><path d="M9 58 V 22 a6 6 0 0 1 12 0 v 26" fill="none" stroke="#9AA0A6" stroke-width="3.4" stroke-linecap="round"/></svg>
+              <span class="letter-head">RECOVISION</span>
+              <span class="letter-sub">ASSISTANCE VISUELLE MOBILE — N°04</span>
+              <span class="obj-num" hidden aria-hidden="true">N°04</span>
+              <p class="obj-desc" data-i18n="proj4Desc">Application mobile d'assistance pour personnes malvoyantes, conçue avec Flutter pour rendre le quotidien plus accessible.</p>
+              <ul class="tech-stickers"><li>Flutter</li><li>Dart</li></ul>
+              <div class="obj-actions"><a class="link-tag" href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go" data-stop><span data-i18n="btnCode">Code Source →</span></a></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="torn torn-b" aria-hidden="true"></div>
+
+    <!-- Seconde bande, sens inverse, encre cobalt -->
+    <div class="tape-marquee tape-marquee-alt" aria-hidden="true">
+      <div class="tape-marquee-track">
+        <div class="tape-marquee-group">
+          <span>PHP</span><span class="mq-accent">•</span><span>LARAVEL</span><span class="mq-accent">•</span><span>CODEIGNITER</span><span class="mq-accent">•</span><span>MYSQL</span><span class="mq-accent">•</span><span>MONGODB</span><span class="mq-accent">•</span><span>FLUTTER</span><span class="mq-accent">•</span>
+        </div>
+        <div class="tape-marquee-group">
+          <span>PHP</span><span class="mq-accent">•</span><span>LARAVEL</span><span class="mq-accent">•</span><span>CODEIGNITER</span><span class="mq-accent">•</span><span>MYSQL</span><span class="mq-accent">•</span><span>MONGODB</span><span class="mq-accent">•</span><span>FLUTTER</span><span class="mq-accent">•</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Notification Toast -->
-    <div id="toast"
-        style="position: fixed; bottom: 20px; right: 20px; background: var(--sticker-red); color: white; padding: 15px 30px; border-radius: 5px; transform: translateY(100px); transition: 0.3s; z-index: 10000; font-family: 'Special Elite', cursive;">
+    <!-- ═══ 04 CONTACT : LET'S TALK ═══ -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-tag" data-i18n="contactLabel">04 // Échange Direct</span>
+          <h2 class="sec-title">
+            <span class="sec-title-text">LET'S&nbsp;TALK</span>
+            <svg class="scribble scribble-cobalt" viewBox="0 0 240 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 13 C 45 21, 90 5, 145 12 S 215 15, 236 9"/></svg>
+            <span class="rubber-stamp sec-stamp" aria-hidden="true">COURRIER</span>
+          </h2>
+          <p class="sec-hand hand-note" aria-hidden="true">parlons-en&nbsp;! ↓</p>
+        </header>
+
+        <div class="contact-grid">
+          <!-- Carnet d'adresses -->
+          <aside class="address-card" data-reveal="left">
+            <span class="tape tape-tc" aria-hidden="true"></span>
+            <span class="postage-stamp" aria-hidden="true"><span class="postage-face"><b>250</b><i>TKAO POSTES</i></span></span>
+            <h3 class="address-title" data-i18n="channelsTitle">Coordonnées de l'Atelier</h3>
+            <p class="hand-intro" data-i18n="channelsIntro">« Un stage, une alternance ou un projet à confier&nbsp;? Laissez un mot — je réponds vite. »</p>
+            <ul class="address-list">
+              <li class="address-row"><span class="addr-type">Email</span><a href="mailto:axeltejiona@gmail.com" class="addr-val" data-cursor="go">axeltejiona@gmail.com</a></li>
+              <li class="address-row"><span class="addr-type">WhatsApp</span><a href="https://wa.me/237692795336" target="_blank" rel="noopener noreferrer" class="addr-val" data-cursor="go">+237 692 79 53 36</a></li>
+              <li class="address-row"><span class="addr-type">GitHub</span><a href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" class="addr-val" data-cursor="go">github.com/axel-tejiona</a></li>
+              <li class="address-row"><span class="addr-type">LinkedIn</span><a href="https://www.linkedin.com/in/axel-tejiona" target="_blank" rel="noopener noreferrer" class="addr-val" data-cursor="go">in/axel-tejiona</a></li>
+              <li class="address-row"><span class="addr-type">Site</span><a href="https://axeldev.vercel.app" target="_blank" rel="noopener noreferrer" class="addr-val" data-cursor="go">axeldev.vercel.app</a></li>
+              <li class="address-row"><span class="addr-type">Atelier</span><span class="addr-val">Ngaoundéré, Cameroun</span></li>
+            </ul>
+          </aside>
+
+          <!-- Feuille formulaire -->
+          <div class="form-sheet" data-reveal="right">
+            <span class="form-badge">COURRIER RAPIDE</span>
+            <span class="form-margin-line" aria-hidden="true"></span>
+            <form id="contactForm">
+              <input type="hidden" name="access_key" value="36dbda8d-b17d-4536-844e-2962fd535170">
+              <input type="hidden" name="subject" value="Nouveau courrier depuis TKAO.DEV">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+
+              <div class="field">
+                <label for="name" class="field-label" data-i18n="formName">Nom ou Entité</label>
+                <input type="text" id="name" name="name" required class="field-input" autocomplete="name" placeholder="Votre nom ou entreprise" data-i18n-ph="placeholderName">
+              </div>
+              <div class="field">
+                <label for="email" class="field-label" data-i18n="formEmail">Adresse de Réponse (Email)</label>
+                <input type="email" id="email" name="email" required class="field-input" autocomplete="email" placeholder="nom@domaine.com" data-i18n-ph="placeholderEmail">
+              </div>
+              <div class="field">
+                <label for="message" class="field-label" data-i18n="formMessage">Message ou Brief de Projet</label>
+                <textarea id="message" name="message" required class="field-input field-textarea" placeholder="Détaillez vos besoins techniques..." data-i18n-ph="placeholderMessage"></textarea>
+              </div>
+
+              <button type="submit" class="btn-send" id="submitBtn" data-cursor="go">
+                <span data-i18n="btnSubmit">Tamponner &amp; envoyer</span><span aria-hidden="true">→</span>
+              </button>
+
+              <div class="stamp-sent" id="stampSent" aria-hidden="true"><span data-i18n="sentStamp">EXPÉDIÉ ✓</span></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="torn" aria-hidden="true"></div>
+
+    <!-- ═══ FIN : DERNIÈRE FEUILLE ═══ -->
+    <section id="final" class="final" aria-label="Conclusion">
+      <div class="final-sheet" data-reveal="drop">
+        <span class="staple staple-tc" aria-hidden="true"></span>
+        <span class="rubber-stamp final-stamp" data-i18n="finalStamp" aria-hidden="true">À suivre…</span>
+        <p class="final-title">Let's build something<span class="final-dot">.</span></p>
+        <a class="hand-link" href="mailto:axeltejiona@gmail.com" data-cursor="go">axeltejiona@gmail.com ↗</a>
+        <span class="final-hand" aria-hidden="true">— axel</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ FOOTER : DERNIÈRE NOTE LAISSÉE SUR LE BUREAU ═══ -->
+  <footer class="footer">
+    <p class="footer-thanks" data-i18n="footerThanks">Merci d'être passé.</p>
+    <p class="footer-wordmark" aria-hidden="true">TKAO<span>.DEV</span></p>
+    <ul class="footer-socials">
+      <li><a href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go">LinkedIn</a></li>
+      <li><a href="https://wa.me/237692795336" target="_blank" rel="noopener noreferrer" data-cursor="go">WhatsApp</a></li>
+      <li><a href="mailto:axeltejiona@gmail.com" data-cursor="go">Email</a></li>
+    </ul>
+    <div class="footer-signature" aria-hidden="true">
+      <span class="hand-sign">Axel T.</span>
+      <svg class="sign-squiggle" viewBox="0 0 140 14" preserveAspectRatio="none"><path d="M3 8 Q 10 2 17 8 T 31 8 T 45 8 T 59 8 T 73 8 T 87 8 T 101 8 T 115 8 T 129 8"/></svg>
     </div>
+    <p class="footer-rights">© 2026 TKAO.DEV • Tejiona Kenfack Axel • <span data-i18n="footerRights">Tous droits réservés</span></p>
+  </footer>
 
-    <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const header = document.querySelector('header');
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('section');
+  <!-- ═══ MODALE PROJET ═══ -->
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-sheet">
+      <span class="tape tape-tc" aria-hidden="true"></span>
+      <button class="modal-close" type="button" data-close aria-label="Fermer" data-cursor="go">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <span class="rubber-stamp modal-num" id="modalNum" aria-hidden="true">N°01</span>
+      <figure class="modal-figure" id="modalFigure"><img id="modalImg" alt="" decoding="async"></figure>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <ul class="tech-stickers" id="modalTech"></ul>
+      <div class="modal-actions">
+        <a class="btn-ink" id="modalLink" href="https://github.com/axel-tejiona" target="_blank" rel="noopener noreferrer" data-cursor="go"><span data-i18n="btnCode">Code Source →</span></a>
+      </div>
+    </div>
+  </div>
 
-            // 1. Scroll Effect (Ca varie !)
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+  <!-- ═══ VISIONNEUSE PHOTO ═══ -->
+  <div class="modal lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photographie agrandie" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <figure class="lightbox-sheet">
+      <button class="modal-close" type="button" data-close aria-label="Fermer" data-cursor="go">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <img id="lightboxImg" alt="Photographie de Tejiona Kenfack Axel" decoding="async">
+    </figure>
+  </div>
 
-                // Active State Update
-                let current = "";
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (window.pageYOffset >= sectionTop - 150) {
-                        current = section.getAttribute("id");
-                    }
-                });
+  <!-- Toast post-it -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-                navLinks.forEach((a) => {
-                    a.classList.remove("active");
-                    if (a.getAttribute("href").includes(current)) {
-                        a.classList.add("active");
-                    }
-                });
-            });
+  <!-- ═══ BARRE MOBILE BASSE (pouce) ═══ -->
+  <nav class="thumb-bar" aria-label="Menu mobile">
+    <div class="thumb-bar-inner">
+      <a href="#hero" class="thumb-btn active" data-cursor="go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span data-i18n="navHome">Accueil</span>
+      </a>
+      <a href="#about" class="thumb-btn" data-cursor="go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span data-i18n="navJournal">Parcours</span>
+      </a>
+      <a href="#skills" class="thumb-btn" data-cursor="go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span data-i18n="navNotes">Skills</span>
+      </a>
+      <a href="#projects" class="thumb-btn" data-cursor="go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-i18n="navProjects">Projets</span>
+      </a>
+      <a href="#contact" class="thumb-btn" data-cursor="go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span data-i18n="navContact">Contact</span>
+      </a>
+    </div>
+  </nav>
 
-            // 2. Smooth Scroll
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // 3. Contact Form Submission (Web3Forms)
-            const contactForm = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const toast = document.getElementById('toast');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function (e) {
-                    e.preventDefault();
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Envoi...';
-
-                    const formData = new FormData(contactForm);
-                    try {
-                        const response = await fetch(contactForm.action, {
-                            method: 'POST',
-                            body: formData
-                        });
-                        const result = await response.json();
-                        if (result.success) {
-                            showToast('Note bien reçue !');
-                            contactForm.reset();
-                        } else {
-                            showToast('Erreur envoi.');
-                        }
-                    } catch (error) {
-                        showToast('Erreur connexion.');
-                    } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Envoyer la Note';
-                    }
-                });
-            }
-
-            function showToast(msg) {
-                toast.textContent = msg;
-                toast.style.transform = 'translateY(0)';
-                setTimeout(() => {
-                    toast.style.transform = 'translateY(100px)';
-                }, 3000);
-            }
-
-            // 4. CV Download Simulation
-            const cvBtn = document.getElementById('downloadCV');
-            if (cvBtn) {
-                cvBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showToast('Téléchargement du CV...');
-                });
-            }
-        });
-    </script>
+  <!-- Motion engine : GSAP + ScrollTrigger + Lenis (local) puis logique -->
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/motion.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
-
 </html>

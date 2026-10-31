@@ -1,0 +1,101 @@
+/* ==========================================================================
+   TKAO.DEV — DESIGN TOKENS  ·  v2 « L'Atelier Carton »
+   Vraies matières : kraft ondulé, papier vieilli, carton d'emballage.
+   90 % matières brunes / 10 % encres fortes. Aucun dégradé décoratif —
+   uniquement de la simulation de matière (grain, cannelures, lumière).
+   ========================================================================== */
+
+:root {
+  /* ── Le bureau (fond kraft, visible entre les feuilles) ── */
+  --desk:        #BE9663;
+  --desk-deep:   #9C7746;
+
+  /* ── Papiers & surfaces ── */
+  --paper:       #F6F0E2;   /* feuille blanche vieillie */
+  --paper-pure:  #FDFAF1;   /* tirage photo */
+  --manila:      #E9D3AB;   /* dossier kraft clair */
+  --manila-deep: #D9BE90;
+  --kraft:       #C9A26B;   /* carton ondulé (panneau projets) */
+  --kraft-soft:  #DDC298;
+  --kraft-deep:  #8A6539;
+  --note-yellow: #FCE9A4;   /* post-it */
+  --bristol:     #F3EDDA;   /* fiche bristol lignée */
+
+  /* ── Encres (brun-noir chaud, comme l'encre sur kraft) ── */
+  --ink:         #2A2118;
+  --charcoal:    #3D3226;
+  --ink-soft:    #6D5B45;
+  --ink-faint:   #9E8C72;
+
+  /* ── Encres de tampon (10 %) ── */
+  --vermilion:   #C43D1B;   /* rouge tampon, encré */
+  --cobalt:      #2050C8;
+  --paper-yellow:#E5B93F;
+  --olive:       #5E6B3D;
+
+  /* ── Grain & fibres (tuiles SVG, aucune requête réseau) ── */
+  /* Fibres kraft : mouchetures brunes sur les surfaces claires */
+  --noise-fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.30  0 0 0 0 0.20  0 0 0 0 0.09  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23f)'/%3E%3C/svg%3E");
+  /* Fibres douces : papiers blancs (moins de mouchetures, reste chaud) */
+  --noise-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.30  0 0 0 0 0.20  0 0 0 0 0.09  0 0 0 0.24 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23s)'/%3E%3C/svg%3E");
+  /* Grain de tampon : usure d'encre légère (le tampon reste lisible) */
+  --noise-stamp: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0 0.02  0 0 0 0.45 0.55'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23t)'/%3E%3C/svg%3E");
+  /* Grain d'encre : pour l'usure des tampons et le grain global */
+  --noise-ink:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0 0.02  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* Fibres claires : sur les papiers sombres (footer) */
+  --noise-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0 0.70  0 0 0 0.28 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23h)'/%3E%3C/svg%3E");
+
+  /* ── Cannelures (la couche ondulée du carton, vue de tranche) ── */
+  --flutes-v: repeating-linear-gradient(90deg,
+    rgba(74, 49, 22, 0.22) 0 1px,
+    rgba(74, 49, 22, 0.07) 1px 3px,
+    rgba(255, 243, 214, 0.20) 3px 5.5px,
+    rgba(74, 49, 22, 0.06) 5.5px 7.5px);
+  --flutes-v-faint: repeating-linear-gradient(90deg,
+    rgba(74, 49, 22, 0.10) 0 1px,
+    rgba(74, 49, 22, 0.03) 1px 3px,
+    rgba(255, 243, 214, 0.10) 3px 5.5px,
+    rgba(74, 49, 22, 0.03) 5.5px 7.5px);
+  --flutes-h: repeating-linear-gradient(0deg,
+    rgba(74, 49, 22, 0.20) 0 1px,
+    rgba(74, 49, 22, 0.06) 1px 3px,
+    rgba(255, 243, 214, 0.18) 3px 5.5px,
+    rgba(74, 49, 22, 0.05) 5.5px 7.5px);
+
+  /* ── Adhésif ── */
+  --tape-bg: linear-gradient(180deg,
+    rgba(236, 224, 196, 0.88), rgba(224, 209, 176, 0.80));
+  --tape-edge: rgba(148, 118, 74, 0.45);
+  --washi-vermilion:
+    linear-gradient(105deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 30%, rgba(255,255,255,0.28) 100%),
+    repeating-linear-gradient(-45deg, rgba(196, 61, 27, 0.55) 0 6px, rgba(196, 61, 27, 0.30) 6px 11px, rgba(250, 246, 234, 0.72) 11px 14px);
+  --washi-cobalt:
+    linear-gradient(105deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 30%, rgba(255,255,255,0.28) 100%),
+    repeating-linear-gradient(-45deg, rgba(32, 80, 200, 0.50) 0 6px, rgba(32, 80, 200, 0.26) 6px 11px, rgba(250, 246, 234, 0.72) 11px 14px);
+
+  /* ── Typographies ── */
+  --font-display: 'Syne', 'Arial Black', sans-serif;
+  --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-tech:    'Space Grotesk', 'Courier New', monospace;
+  --font-hand:    'Caveat', 'Segoe Script', cursive;
+  --font-stamp:   'Allerta Stencil', 'Arial Black', sans-serif;
+
+  /* ── Ombres : chaudes, directionnelles, avec contact marqué ── */
+  --sh-1: 0 1px 2px rgba(62, 40, 18, 0.16), 0 2px 6px rgba(62, 40, 18, 0.10);
+  --sh-2: 0 1px 2px rgba(62, 40, 18, 0.18), 0 4px 10px rgba(62, 40, 18, 0.12), 0 14px 28px rgba(52, 33, 14, 0.14);
+  --sh-3: 0 2px 3px rgba(62, 40, 18, 0.20), 0 10px 22px rgba(52, 33, 14, 0.16), 0 26px 50px rgba(52, 33, 14, 0.16);
+  --sh-photo: 0 2px 4px rgba(62, 40, 18, 0.22), 0 12px 26px rgba(52, 33, 14, 0.20), 0 28px 56px rgba(52, 33, 14, 0.16);
+  --sh-hard: 3px 4px 0 rgba(42, 33, 26, 0.88);
+
+  /* ── Mouvement ── */
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-settle:  cubic-bezier(0.16, 1.1, 0.3, 1);
+  --dur-fast:     0.22s;
+  --dur-med:      0.4s;
+
+  /* ── Layout ── */
+  --container:    1240px;
+  --nav-h:        58px;
+  --radius-paper: 2px;
+  --radius-stick: 4px;
+}
